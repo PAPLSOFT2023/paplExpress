@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PAPL EXPRESS - Your One-Stop Solution</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body >
+  
+
+<!-- Navigation Bar -->
+ <div class="navbar">  
+  <div class="logo-img">       
+  <img src="assets/papl_logo.png" alt="Your Logo" class="logo">
+</div> 
+<div class="navbar-mail">
+  <a href="mailto:info@paplcorp.com" target="_blank"><i class="far fa-envelope"></i> info@paplcorp.com</a>
+  <a routerLink="/contact"><i class="fas fa-phone"></i> +(91) 044-4261 3912</a>
+</div>
+ </div>
+
+<!-- Navigation Bar 1 -->
+<div class="navbar1" [class.fixed]="isNavbar1Fixed">
+  <div class="mobile-menu-icon" (click)="toggleMobileMenu()" >
+    <i class="fa" [ngClass]="isMobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+  </div>
+  <div class="navbar-links" [ngClass]="{'show-mobile': isMobileMenuOpen}">
+    <a style="color: #ee7f22" href="http://localhost:4200/sales_home" ><i class="fa fa-home"></i> Home</a>
+    <a href="https://paplcorp.com/about.html"><i class="fas fa-info-circle"></i> About Us</a>
+
+    <!-- Services Dropdown -->
+    <div class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-hands-helping"></i> Services <i class="fa fa-chevron-down" style="font-size:12px;"></i></a>
+      <div class="dropdown-content">
+        <a href="https://paplcorp.com/services-01.html"><i class="fa fa-cogs"></i> VHT Planning & Engineering</a>
+        <a href="https://paplcorp.com/services-02.html"><i class="fa fa-clipboard-check"></i> E-Comply</a>
+        <a href="https://paplcorp.com/services-03.html"><i class="fa fa-tools"></i> Standard Inspection</a>
+        <a href="https://paplcorp.com/services-04.html"><i class="fa fa-sync-alt"></i> Periodic Inspection</a>
+        <a href="https://paplcorp.com/services-05.html"><i class="fa fa-wrench"></i> VHT Modernization Services</a>
+        <a href="https://paplcorp.com/services-06.html"><i class="fa fa-car"></i> Car-Park Planning & Engineering</a>
+        <a href="https://paplcorp.com/services-07.html"><i class="fa fa-shield-alt"></i> VHT Due Diligence</a>
+      </div>
+    </div>
+
+    <a href="https://paplcorp.com/projects.html"><i class="fa fa-tasks"></i> Projects</a>
+
+    <!-- Policies Dropdown -->
+    <div class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn"><i class="fa fa-file-alt"></i> Policies <i class="fa fa-chevron-down" style="font-size:12px;"></i></a>
+      <div class="dropdown-content">
+        <a href="https://paplcorp.com/ourbrand.html"><i class="fa fa-handshake"></i> Brand Policy</a>
+        <a href="https://paplcorp.com/policy.html"><i class="fa fa-gavel"></i> Impartiality & Independence</a>
+        <a href="https://paplcorp.com/ethics.html"><i class="fa fa-book"></i> Codes of Ethics</a>
+        <a href="https://paplcorp.com/policy-04.html"><i class="fa fa-exclamation-triangle"></i> Policy on Compliants and Appeals</a>
+        <a href="https://paplcorp.com/policy-05.html"><i class="fa fa-sliders-h"></i> Design Neutrality</a>
+      </div>
+    </div>
+
+    <a [routerLink]="['/news']" ><i class="fa fa-newspaper"></i> News</a>
+    <a [routerLink]="['/techInsight']"><i class="fa fa-lightbulb"></i> Tech Insights</a>
+    <a href="https://paplcorp.com/careers.html"><i class="fa fa-user-tie"></i> Careers</a>
+    <a href="https://paplcorp.com/faq.html"><i class="fa fa-question-circle"></i> FAQ</a>
+    <div class="right-nav">
+      <ul class="main-nav">
+        
+        
+        <li>
+          <a href="mailto:info@paplcorp.com" target="_blank">
+            <div class="logout-button">
+              <i class="far fa-envelope"></i> 
+            </div>
+          </a>
+        </li>
+        
+            <li><a href="https://www.facebook.com/paplcorp/" target="_blank">
+                <div class="logout-button">
+                    <i class="fab fa-facebook-f"></i>
+                </div></a>
+            </li>
+            <li><a href="https://www.linkedin.com/company/papl-corp" target="_blank">
+                <div class="logout-button">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+              </a>
+            </li>
+            <li><a href="https://x.com/i/flow/login?redirect_after_login=%2FPAPLCorp" target="_blank">
+                <div class="logout-button">
+                    <i class="fab fa-twitter"></i>
+                </div>
+              </a>
+            </li>
+        
+           
+            
+            
+            
+            
+       
+        <!-- <li>
+          <a href="https://paplcentral.com" class="login-button"><i class="fas fa-sign-in-alt"></i> PAPL Central Login</a>
+    
+        </li> -->
+    </ul>
+    
+          </div>
+  </div>
+</div>
+
+  
+  
+
+
+<!-- Header -->
+<div>
+  <header class="header" [ngStyle]="{ 'background-image': 'url(' + currentBackground + ')' }">
+    
+    <!-- <div class="header-img">
+      <div class="outer-ring">
+        <div class="inner-ring">
+          <img src="assets/papl_logo.png" alt="Your Logo" class="logo">
+          <div class="logo-text">Express</div>
+        </div>
+      </div>
+    </div> -->
+    
+    
+    
+    
+
+    <div class="header-p">
+      <!-- <h1  style="font-size: 60px;">PAPL EXPRESS</h1> -->
+      <!-- <br> -->
+      <!-- <h3 ><b>VHT & Car Planners, Engineering and Inspectors</b></h3> -->
+      
+  <div class="icons-container">
+    <a href="https://paplexpress.com/login"><i class="fas fa-user-tie icon" ></i>
+    </a>
+    <a href="https://paplcentral.com/" ><i class="fas fa-user icon"></i>
+    </a>
+  </div>
+
+  <div class="login-container">
+    <a href="https://paplexpress.com/login" class="login-link">Express Login
+    </a>
+    <a href="https://paplcentral.com/" class="login-link">Central Login
+    </a>
+  </div>
+  <h3 ><b>VHT & Car Planners, Engineering and Inspectors</b></h3>
+</div>
+    
+    
+    
+    
+    
+  </header>
+</div>
+
+
+
+
+
+
+<div id="announcement">
+    <!-- <div class="announcement-container"> -->
+        <!-- <div class="info">
+            <h2>Welcome to Our Organization</h2>
+            <p>Contact us at <a href="mailto:info@paplcorp.com">info@paplcorp.com</a> for more information.</p>
+        </div>
+        <div class="action">
+            <button type="button" routerLink="/neworganization">NEW ORGANIZATION HERE!</button>
+        </div> -->
+    <!-- </div> -->
+</div>
+
+
+
+<!-- Stats Section Below Announcement -->
+<div id="stats">
+  <h2 class="stats-heading">PAPL EXPRESS</h2>
+  <h4 class="stats-heading2">India’s leading VHT Planning, engineering and independent inspection company.</h4>
+<br>
+<br>
+  <div class="stats-container">
+    <div class="stat">
+      <p>{{ totalProjects }}+</p> <!-- Dynamic counter -->
+      <h3>TOTAL NO. UNITS</h3>
+    </div>
+    <!-- <div class="stat">
+      <p>{{ totalProjects }}+</p> 
+      <h3>contracts</h3>
+    </div> -->
+    
+    <div class="stat">
+      <p>{{ unitsServiced }}+</p> <!-- Dynamic counter for Units Serviced -->
+      <h3>TOTAL NO. INSPECTION</h3>
+    </div>
+    <div class="stat">
+      <p>{{ netProfit.toLocaleString() }}+</p> <!-- Dynamic counter for Net Profit -->
+      <h3>INSPECTOR COLLECTIVE EXPERIENCE</h3>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  
+
+
+
+<!----> 
+<!-- The flexible grid (content) -->
+
+
+
+
+<div class="row-1">
+  <div class="image">
+    <div class="video-overlay">
+      <video #video class="video_area" autoplay muted loop playsinline preload="auto">
+        <source src="assets/homepage.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    </div>
+    
+</div>
+
+
+
+    
+    
+
+<div class="row-1-content" style="display: flex; flex-direction: row; justify-content: space-between; padding: 20px;">
+  <div class="content-description" style="flex: 1; margin-right: 20px;">
+    <h2 style="font-size: 20px; color: #333; margin-bottom: 20px;">Elevator Systems Overview</h2>
+    
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Hydraulic Elevators:</strong> Ideal for low-rise buildings, hydraulic elevators offer a smooth ride with reliable performance.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Traction Elevators:</strong> Suitable for high-rise buildings, traction elevators use ropes and pulleys for efficient vertical movement.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Machine-Room-Less (MRL) Elevators:</strong> These space-saving elevators are designed without a dedicated machine room, providing flexibility in design.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Freight Elevators:</strong> Built for transporting goods, freight elevators are robust and designed to handle heavy loads.</li>
+    </ul>
+    
+  </div>
+  <div class="row-1-empty" style="flex: 0 0 20%;"></div>
+</div>
+</div>
+
+  
+
+
+
+
+
+  
+<!--row 2-->
+
+<div class="row-2">
+  <div class="image">
+    <img class="image-2" src="assets/homepage3.jpg" alt="Responsive Image">
+  </div>
+  <div class="row-2-content" style="display: flex; flex-direction: row; justify-content: space-between; padding: 20px;">
+    <div class="content-description" style="flex: 1; margin-right: 20px;">
+      <h2 style="font-size: 18px; color: #333; margin-bottom: 20px;">Elevator Systems Overview</h2>
+      
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Rope-Driven Elevators:</strong> Utilizing a system of ropes and pulleys, these elevators are known for their smooth and quiet operation. They are commonly used in commercial buildings and high-rise apartments.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Vacuum Elevators:</strong> These elevators use air pressure to lift the cabin, providing a sleek and modern design. They are often used in residential buildings and offer a unique aesthetic appeal.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Dumbwaiters:</strong> Designed for transporting small loads between floors, dumbwaiters are commonly used in restaurants, hotels, and libraries to move items like food, books, and supplies.</li>
+
+      </ul>
+      
+    </div>
+    <div class="row-2-empty" style="flex: 0 0 20%;"></div>
+  </div>
+</div>
+  
+
+<div class="row-1">
+  <div class="image">
+    <div class="video-overlay">
+      <video class="video_area" autoplay muted loop playsinline>
+        <source src="assets/homepage3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+</div>
+
+
+
+  
+<div class="row-1-content" style="display: flex; flex-direction: row; justify-content: space-between; padding: 20px;">
+  <div class="content-description" style="flex: 1; margin-right: 20px;">
+    <h2 style="font-size: 20px; color: #333; margin-bottom: 20px;">Elevator Systems Overview</h2>
+    
+    <ul style="list-style-type: disc; padding-left: 20px;">
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Hydraulic Elevators:</strong> Ideal for low-rise buildings, hydraulic elevators offer a smooth ride with reliable performance.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Traction Elevators:</strong> Suitable for high-rise buildings, traction elevators use ropes and pulleys for efficient vertical movement.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Machine-Room-Less (MRL) Elevators:</strong> These space-saving elevators are designed without a dedicated machine room, providing flexibility in design.</li>
+      <li style="margin-bottom: 10px;"><strong style="color: #000;">Freight Elevators:</strong> Built for transporting goods, freight elevators are robust and designed to handle heavy loads.</li>
+    </ul>
+    
+  </div>
+  <div class="row-1-empty" style="flex: 0 0 20%;"></div>
+</div>
+</div>
+
+
+<!--row 4-->
+
+<div class="row-2">
+  <div class="image">
+    <img class="image-2" src="assets/homepage2.jpg" alt="Responsive Image">
+  </div>
+  <div class="row-2-content" style="display: flex; flex-direction: row; justify-content: space-between; padding: 20px;">
+    <div class="content-description" style="flex: 1; margin-right: 20px;">
+      <h2 style="font-size: 18px; color: #333; margin-bottom: 20px;">Elevator Systems Overview</h2>
+      
+      <ul style="list-style-type: disc; padding-left: 20px;">
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Rope-Driven Elevators:</strong> Utilizing a system of ropes and pulleys, these elevators are known for their smooth and quiet operation. They are commonly used in commercial buildings and high-rise apartments.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Vacuum Elevators:</strong> These elevators use air pressure to lift the cabin, providing a sleek and modern design. They are often used in residential buildings and offer a unique aesthetic appeal.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: #000;">Dumbwaiters:</strong> Designed for transporting small loads between floors, dumbwaiters are commonly used in restaurants, hotels, and libraries to move items like food, books, and supplies.</li>
+
+      </ul>
+      
+    </div>
+  </div>
+</div>
+<!-- //////////////////////////////// -->
+
+
+
+<div class="card-container">
+  <div class="card" >
+    <div class="image-container">
+      <img src="/assets/mission.jpg"  class="card-image" />
+    
+      <h3 class="hover-effect">MISSION & VISION</h3>
+      <p>Dedicating resources, industry experience and technological innovation to Plan a safe, reliable, efficient and intelligent Vertical Transportation and Car Parking Systems for our clients.
+    </p>
+    <a class="read-more" href="https://paplcorp.com/mission.html">Click Here...</a>
+  </div>
+</div>
+
+<div class="card" >
+  <div class="image-container">
+    <img src="/assets/contact 2.jpg"  class="card-image" />
+  
+  <h3 class="hover-effect">CONTACT US</h3>
+  <p>It would be great to hear from you! If you got any questions, please do not hesitate to send us a message. We are looking forward to hearing from you! We reply within 24 hours!
+  </p>
+  <a class="read-more" href="https://paplcorp.com/contact.html">Click Here...</a>
+</div>
+</div>
+
+<div class="card" >
+  <div class="image-container">
+    <img src="/assets/core.jpg"  class="card-image" />
+  
+  <h3 class="hover-effect">CORE VALUES</h3>
+  <p>PAPL Corp is a very innovative organization. Our clients are some of the most forward looking companies in the world. We ensure we meet the expectations of our clients.
+  </p>
+  <a class="read-more" href="https://paplcorp.com/core-values.html">Click Here...</a>
+</div>
+</div>
+</div>
+
+
+
+  
+
+<div class="box-5">
+  <!-- <div id="banner-section"> -->
+    <div class="banner-content">
+      <div class="banner-info">
+        <!-- <h2>Welcome to Our Organization</h2> -->
+        <p>Want to know more about us, go ahead and download our company Brochure here</p>
+      </div>
+      <div class="banner-action">
+        <button type="button" id="downloadButton" (click)="downloadBrochure()">
+          COMPANY BROCHURE <i class="fas fa-download"></i>
+        </button>
+              </div>
+    </div>
+  <!-- </div> -->
+</div>
+
+
+
+ 
+
+
+<div class="footer1">
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-content">
+    <div class="footer-item">
+      <a href="https://paplcorp.com/policy-01.html">
+        Employee Information Privacy Policy
+      </a>
+    </div>
+
+    <div class="footer-item">
+      <a href="https://paplcorp.com/terms-01.html">Website Terms of Use</a></div>
+
+    <div class="footer-item">
+      <a href="https://paplcorp.com/policy-02.html">Website Privacy Policy</a></div>
+
+    <div class="footer-item">
+      <a href="https://paplcorp.com/policy-03.html">Website Privacy Statement</a></div>
+  </div>
+
+  <hr class="footer-line">
+  <div class="footer-copyright">
+    <div class="copyright-left">
+      &copy;Copyright 2025 to<a style="color:#ee7f22;  text-decoration: none;
+"> PAPL EXPRESS</a>. All Rights Reserved.
+    </div>
+    <div class="copyright-right">
+      Powered by <a style="color:#ee7f22;  text-decoration: none; ">PAPL SOFT</a>
+    </div>
+  </div>
+</div>
+
+
+  
+</body>
+</html>

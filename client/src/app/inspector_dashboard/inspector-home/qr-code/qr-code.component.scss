@@ -1,0 +1,1247 @@
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensures the modal is on top */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ee7f22;
+  width: 400px;
+  position: relative; /* To position the close button */
+  text-align: center; /* Centering the content inside the modal */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Close button styles */
+.close-btn {
+  position: absolute;
+  top: -12px;
+  // margin-top: -14px;
+  right: -6px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: red;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+//   /* Loading spinner (you can customize this style) */
+//   .loading-spinner {
+//     display: block;
+//     margin: 20px auto;
+//     border: 4px solid #f3f3f3;
+//     border-top: 4px solid #3498db;
+//     border-radius: 50%;
+//     width: 50px;
+//     height: 50px;
+//     animation: spin 2s linear infinite;
+//   }
+
+//   /* Spinner animation */
+//   @keyframes spin {
+//     0% { transform: rotate(0deg); }
+//     100% { transform: rotate(360deg); }
+//   }
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.qr-instruction {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color:#312e5d;
+  text-align: center;
+}
+
+.qr-code {
+  max-width: 100%;
+  height: auto;
+}
+
+.qr-logo {
+  margin-top: 15px;
+  max-width: 100px; /* Adjust as needed */
+  height: auto;
+  object-fit: contain;
+}
+
+//   .download-btn {
+//     margin-top: 20px;
+//     padding: 10px 20px;
+//     background-color: #3498db;
+//     color: white;
+//     border: none;
+//     border-radius: 5px;
+//     cursor: pointer;
+//   }
+
+//   .download-btn:hover {
+//     background-color: #2874a6;
+//   }
+
+
+
+// /* Basic reset */
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//     font-family:calibri;
+//   }
+
+//   /* Container holding everything */
+//   .container {
+//     display: grid;
+//     grid-template-areas:
+//         'header header'
+//         'content content'
+//         'footer footer';
+//     grid-template-columns: 200px 1fr;
+//     grid-template-rows: 60px 1fr auto;
+//     height: 100vh;
+//     background: url('/assets/bg.jpg') no-repeat center center;
+//     background-size: cover;
+//     color: #333;
+//   }
+
+//   /* Header styling */
+//   .header {
+//     grid-area: header;
+//     background-color: #24292e;
+
+//     color: white;
+//     text-align: center;
+//     padding: 15px;
+//     position: relative;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+//   }
+
+//   /* Ensure content does not overlap search bar */
+//   .content {
+//     position: relative; /* Allow absolute positioning of the search bar */
+//     grid-area: content;
+//     padding: 20px;
+//     background-color: #0f0e0e8f;
+//     overflow-y: auto;
+//   }
+
+
+//   .header h1 {
+//     font-size: 1.5em;
+//   }
+
+
+//   .search-box {
+//     position: fixed; /* Fixed position to keep it on the screen */
+//     right:40px; /* Distance from the right side */
+//     top:75px; /* Adjust this value to control the vertical position */
+//     display: flex;
+//     align-items: center;
+//     width: fit-content; /* Ensures the width adjusts to content */
+//     height: fit-content; /* Adjusts height to fit the content */
+//     z-index: 1000; /* Ensures it stays on top of other elements */
+//   }
+
+//   .input-search{
+//     height: 50px;
+//     width: 50px;
+//     border-style: none;
+//     padding: 10px;
+//     font-size: 18px;
+//     letter-spacing: 2px;
+//     outline: none;
+//     border-radius: 25px;
+//     transition: all .5s ease-in-out;
+//     background-color:rgba(255, 255, 255, 0.231) ;
+//     padding-right: 40px;
+//     color:#fff;
+//   }
+//   .input-search::placeholder{
+//     color:rgba(255,255,255,.5);
+//     font-size: 18px;
+//     letter-spacing: 2px;
+//     font-weight: 100;
+//   }
+//   .btn-search{
+//     width: 50px;
+//     height: 50px;
+//     border-style: none;
+//     font-size: 20px;
+//     font-weight: bold;
+//     outline: none;
+//     cursor: pointer;
+//     border-radius: 50%;
+//     position: absolute;
+//     right: 0px;
+//     color:white;
+//     background-color:transparent;
+//     pointer-events: painted;  
+//   }
+//   .btn-search:focus ~ .input-search{
+//     width: 300px;
+//     border-radius: 0px;
+//     background-color: transparent;
+//     border-bottom:1px solid rgba(255,255,255,.5);
+//     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+//   }
+//   .input-search:focus{
+//     width: 300px;
+//     border-radius: 0px;
+//     background-color: transparent;
+//     border-bottom:1px solid rgba(255,255,255,.5);
+//     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+//   }
+//   /* Main content styling */
+//   .content {
+//     grid-area: content;
+//     padding: 20px;
+//     background-color: rgba(15, 14, 14, 0.9);
+//     overflow-y: auto;
+//   }
+
+//   /* Table Container */
+//   .table-responsive {
+//     width:1400px;
+//     max-height: 450px; /* Set a maximum height for the container */
+//     overflow-y: auto; /* Enable vertical scrolling */
+//     margin-left:50px;
+//     margin-bottom:10px;
+//     margin-top:30px;
+//     border-radius: 8px;
+//     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//   }
+
+//   /* Styled Table */
+//   .styled-table {
+//     width: 100%;
+//     border-collapse: collapse; /* Ensure no gaps between borders */
+//   }
+
+//   .styled-table thead {
+//     position: sticky; /* Make header sticky */
+//     top: 0; /* Stick it to the top */
+//     z-index: 1; /* Higher stacking context */
+//     background-color: #24292e; /* Background color */
+//     color: #ffffff; /* Text color for better visibility */
+//   }
+
+//   .styled-table th, .styled-table td {
+//     padding: 12px 15px; /* Add padding for readability */
+//     text-align: center; /* Align text to the left */
+//   }
+
+//   .styled-table tbody tr {
+//     border-bottom: 1px solid #dddddd; /* Add bottom border for rows */
+//   }
+
+//   .styled-table tbody tr {
+//     background-color: #f3f3f3; /* Alternate row colors for readability */
+//   }
+
+//   .styled-table tbody tr:last-of-type {
+//     border-bottom: 2px solid #f3f3f3; /* Bottom border for the last row */
+//   }
+
+
+//   /* Style for Approve Button */
+//   .edit-icon {
+//     color: #333;
+//     font-size: 16px;
+//     cursor: pointer;
+//     margin-right: 10px; /* Adds 10px space between approve and reject icons */
+//   }
+
+
+
+
+
+
+
+//   /* Custom Scrollbar Styling (Optional) */
+//   .table-responsive::-webkit-scrollbar {
+//     width: 4px; /* Width of the scrollbar */
+//   }
+
+//   .table-responsive::-webkit-scrollbar-track {
+//     background: #f1f1f1; /* Scrollbar track color */
+//   }
+
+//   .table-responsive::-webkit-scrollbar-thumb {
+//     background-color: #888; /* Scrollbar thumb color */
+//     border-radius: 10px; /* Rounded corners */
+//   }
+
+//   .table-responsive::-webkit-scrollbar-thumb:hover {
+//     background: #555; /* Scrollbar thumb hover color */
+//   }
+
+//   /* Media Queries for Responsiveness */
+//   @media (max-width: 768px) {
+//     .styled-table th, .styled-table td {
+//         font-size: 14px;
+//         padding: 10px;
+//     }
+//   }
+
+//   @media (max-width: 480px) {
+//     .styled-table th, .styled-table td {
+//         font-size: 12px;
+//         padding: 8px;
+//     }
+//   }
+//   .styled-table th, .styled-table td {
+//     padding: 12px 15px;
+//     text-align: center;
+//   }
+
+//   .styled-table tbody tr {
+//     border-bottom: 1px solid #dddddd;
+//     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+//   }
+//   .styled-table tbody tr:hover {
+//     background-color: #e0e0e0d8;
+//     transform: scale(1.02); /* Slight scale up on hover */
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   }
+
+
+//   /* Keyframes for slide-in animation */
+//   @keyframes slideIn {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(20px);
+//     }
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+//   }
+
+//   /* Apply animation to table rows */
+//   .styled-table tbody tr {
+//     animation: slideIn 0.5s ease forwards; /* Slide in animation */
+//     opacity: 0; /* Initial state to prevent a flash of content */
+//   }
+
+
+
+//   /* Styling for h2 */
+//   .container h2 {
+//     font-size: 2em;
+ 
+//     margin-bottom: 10px;
+//     color:rgba(238, 232, 232, 0.8);
+//     /* transition: color 0.3s, transform 0.3s, text-shadow 0.3s; */
+//   }
+
+//   /* Footer styling */
+//   .footer {
+//     grid-area: footer;
+//     background-color: #24292e;
+//     color: white;
+//     text-align: center;
+//     padding: 10px;
+//     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+//   }
+
+//   /* Large screens (desktops) */
+//   @media (min-width: 1025px) {
+//     .container {
+//         grid-template-columns: 200px 1fr; /* Two-column layout */
+//         grid-template-areas:
+//             'header header'
+//             'content content'
+//             'footer footer';
+//     }
+//     .table-responsive {
+//         width: 100%; /* Adjust table to container width */
+//         margin-left: 0; /* Center table */
+//     }
+//     .search-box {
+//         right: 60px; /* Adjust position */
+//         top: 75px; /* Adjust position */
+//     }
+//   }
+
+//   /* Tablets (768px to 1024px) */
+//   @media (max-width: 1024px) {
+//     .container {
+//         grid-template-columns: 1fr; /* Single-column layout */
+//         grid-template-areas:
+//             'header'
+//             'content'
+//             'footer';
+//     }
+//     .header h1 {
+//         font-size: 20px; /* Smaller font size */
+//     }
+//     .menu-icon {
+//         width: 25px;
+//         height: 30px;
+//         font-size: 22px; /* Smaller icon */
+//     }
+//     .search-box {
+//         top: 65px; /* Adjust search box position */
+//         right: 30px; /* Adjust search box position */
+//     }
+//     .table-responsive {
+//         width: 90%; /* Adjust table width */
+//         margin: 0 auto; /* Center the table */
+//     }
+//     .view-btn {
+//         font-size: 12px; /* Adjust button font size */
+//     }
+//   }
+
+//   /* Large Mobile Phones (480px to 767px) */
+//   @media (max-width: 767px) {
+//     .container {
+//         grid-template-columns: 1fr; /* Single-column layout */
+//         padding: 10px; /* Reduce padding */
+//     }
+//     .header h1 {
+//         font-size: 18px; /* Smaller header font size */
+//     }
+//     .menu-icon {
+//         width: 20px;
+//         height: 25px;
+//         font-size: 18px; /* Smaller icon */
+//     }
+//     .search-box {
+//         right: 20px; /* Adjust position */
+//         top: 60px; /* Adjust position */
+//         width: 80%; /* Stretch search box */
+//     }
+//     .input-search {
+//         width: 200px; /* Adjust search input width */
+//     }
+//     .view-btn {
+//         font-size: 11px; /* Adjust button font size */
+//         padding: 5px 8px; /* Adjust padding */
+//     }
+//     .styled-table th, .styled-table td {
+//         font-size: 13px; /* Smaller table font size */
+//         padding: 8px; /* Reduce padding */
+//     }
+//   }
+//   /* Style for the view icon */
+//   .view-icon {
+//     font-size:16px; /* Adjust size */
+//     color: #333;
+//     cursor: pointer; /* Show clicking hand cursor */
+//   }
+
+//   /* Small Mobile Phones (up to 479px) */
+//   @media (max-width: 479px) {
+//     .header h1 {
+//         font-size: 16px; /* Smaller font size for header */
+//     }
+//     .menu-icon {
+//         width: 18px;
+//         height: 20px;
+//         font-size: 16px; /* Smaller icon */
+//     }
+//     .search-box {
+//         right: 10px; /* Adjust position */
+//         top: 55px; /* Adjust position */
+//         width: 70%; /* Further stretch search box */
+//     }
+//     .input-search {
+//         width: 150px; /* Adjust search input width */
+//     }
+//     .view-btn {
+//         font-size: 10px; /* Adjust button font size */
+//         padding: 4px 6px; /* Adjust padding */
+//     }
+//     .styled-table th, .styled-table td {
+//         font-size: 12px; /* Smaller font size */
+//         padding: 6px; /* Reduce padding */
+//     }
+//     .styled-table tbody tr:hover {
+//         transform: none; /* Remove hover effect for smaller devices */
+//         box-shadow: none; /* Remove shadow for smaller devices */
+//     }
+//     .footer {
+//         padding: 8px; /* Smaller padding */
+//     }
+//   }
+
+//   /* Further Adjustments for Extra Small Devices (360px and below) */
+//   @media (max-width: 360px) {
+//     .header h1 {
+//         font-size: 14px; /* Further reduced font size */
+//     }
+//     .menu-icon {
+//         width: 15px;
+//         height: 18px;
+//         font-size: 14px; /* Smaller icon size */
+//     }
+//     .view-btn {
+//         font-size: 9px; /* Further adjust button font size */
+//         padding: 3px 5px; /* Adjust padding */
+//     }
+//     .input-search {
+//         width: 100px; /* Adjust input width */
+//         font-size: 14px; /* Smaller input text */
+//     }
+//     .styled-table th, .styled-table td {
+//         font-size: 11px; /* Smaller table font size */
+//         padding: 4px; /* Smaller padding */
+//     }
+//     .footer {
+//         font-size: 12px; /* Smaller font size */
+//     }
+
+
+//     /* Style for the button */
+// .button-style {
+//     font-size: 15px;          /* Set the font size to 15px */
+//     background: none;         /* No background color */
+//     border: none;             /* No border */
+//     padding: 0;               /* No padding */
+//     color: inherit;           /* Inherit color from parent element */
+//     cursor: pointer;         /* Change cursor to pointer on hover */
+//     text-align: center;       /* Ensure the text is centered */
+//     display: inline-flex;     /* Use inline-flex for a flexible button layout */
+//     align-items: center;      /* Vertically center the content */
+//     color: #000;
+//     justify-content: center;  /* Horizontally center the content */
+//     transition: all 0.3s ease; /* Smooth transition for hover effects */
+//   }
+
+//   /* Add hover effect */
+//   .button-style:hover {
+//     color: #007bff;           /* Change color to blue on hover */
+//     background-color: #f8f9fa; /* Light gray background on hover */
+//     border-radius: 4px;        /* Slight rounding of corners on hover */
+//   }
+
+//   /* Optional: If you want to add focus styles when the button is clicked or focused */
+//   .button-style:focus {
+//     outline: none;           /* Remove default outline */
+//     box-shadow: 0 0 0 2px #007bff; /* Blue glow effect */
+//   }
+
+//   /* Optional: Style for the icon inside the button, if you plan to use icons */
+//   .button-style i {
+//     font-size: 20px;           /* Set icon size */
+//     margin-right: 5px;         /* Space between icon and text */
+//   }
+
+//   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+* {
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+box-sizing: border-box;
+}
+
+.opening-meeting {
+height: 100vh;
+background-repeat: no-repeat;
+}
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+height: 60px;
+background-color: #ffffff;
+color: white;
+}
+
+.logo img {
+width:40px;
+height: 38px;
+margin-top: 8px;
+margin-right: 5px;
+}
+
+.left-section {
+display: flex;
+align-items: center;
+}
+
+.logo-separator {
+height: 40px;
+width: 2px;
+background-color: #3b3765;
+position: absolute;
+margin-left: 46px;
+}
+.logo-watch{
+height: 30px;
+width: 30px;
+}
+.logo-name {
+display: flex;
+align-items: center;
+margin-left: 10px;
+}
+
+.sales-logo {
+border: 2px solid #3b3765;
+padding-right: 5px;
+border-radius: 5px;
+}
+
+.logo-name .name {
+font-size: 20px;
+font-weight: bold;
+color: #ee7f22;
+margin-left: 10px;
+}
+
+.right-section {
+display: flex;
+align-items: center;
+gap: 70px;
+}
+
+/* Right-side elements */
+.header-right {
+position: absolute;
+right: 15px; /* Align to the right side */
+display: flex;
+align-items: center;
+gap: 10px; /* Space between elements */
+}
+
+/* Administrator section */
+.emoji-icon {
+display: flex;
+align-items: center;
+color: #ee7f22;
+font-size: 18px;
+margin-right:-70px;
+font-weight: bold;
+gap: 5px;
+}
+/* Style for the admin image */
+.admin-image {
+width: 30px; /* Adjust the width as needed */
+height: 30px; /* Adjust the height as needed */
+border-radius: 50%; /* Makes the image circular */
+object-fit: cover; /* Ensures the image maintains aspect ratio */
+margin-right: 5px; /* Space between the image and text */
+vertical-align: middle; /* Aligns the image with the text */
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: #393667;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  border: 1.5px solid #ee7f22;
+  right: 0;
+  top: 140%;
+  background-color: #f9f9f9;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+  color: #39346b;
+  padding:10px 10px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+}
+
+// /* Hover effect on dropdown links */
+// .dropdown-content a:hover {
+//   background-color: #f1f1f1;
+// }
+.dropdown-content img{
+  width: 18px;
+  margin-bottom: -3px;
+}
+.login-buttons .btn:hover {
+background-color: #e0e0e0;
+}
+
+.hero {
+height: calc(100vh - 60px);
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+flex-wrap: wrap;
+background-image: url("/assets/opening meeting.png");
+background-size: 100% auto; /* Increases the width to 120% while maintaining the aspect ratio */
+background-repeat: no-repeat; /* Prevents the background image from repeating */
+background-position: center; /* Centers the background image */
+}
+
+
+.timeline {
+display: flex;
+align-items: start;
+justify-content: space-between;
+width: 29%;
+max-width: 1000px;
+position: absolute;
+top: 90px; 
+left: 20px; 
+}
+.timeline::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 0;
+right: 0;
+height: 4px;
+// background-color: #ee7f22;
+background: linear-gradient(
+  to right,
+  #ee7f22 0%,    /* Starting color */
+  #ee7f22 100%,   /* White line till 25% */
+);
+z-index: 1;
+}
+.timeline-item {
+position: relative;
+z-index: 2;
+background-color: white;
+width: 40px;
+height: 40px; 
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.timeline-item .icon {
+font-size: 24px;
+color: #4caf50;
+}
+.timeline-item-inquiry {
+display: flex;
+align-items: flex-end;
+justify-content: flex-start;
+width: 40%; 
+max-width: 1000px; 
+position: absolute;
+color: #fff;
+margin-left: 20px;
+top: 100px; 
+right: 10px; 
+}
+.timeline-content p {
+margin: 0;
+}
+.icon{
+width: 30px;
+}
+.timeline-content a {
+margin-left: 4px;
+color: yellow;
+}
+
+
+// my table section
+
+.main-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 100px;
+padding: 10px 10px;
+max-height: 550px;
+margin-top: 60px;
+width: 100%;
+height: 100%;
+max-width: 1250px;
+background: #39346b;
+position: relative;
+border-radius: 18px;
+
+}
+
+
+// inner-container section
+
+.inner-container {
+background-color: #ffffff;
+width: 100%;
+height: 100%;
+max-width: 1180px;
+max-height: 500px;
+padding: 10px 15px;
+border-radius: 13px;
+}
+
+// worker information section
+
+.worker-info {
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: center;
+width: 100%;
+gap:2px;
+}
+
+.worker-info h4 {
+color: #3b3765;
+margin-top: 15px;
+font-size:20px;
+font-weight: bold;
+}
+
+.worker_logo {
+width: 32px;
+height: 32px;
+background: none;
+}
+
+
+// table container section
+
+.table-container {
+background-color: #ffffff;
+height: 400px;
+overflow-y: auto;
+position: relative;
+// padding-bottom: 20px;
+}
+
+.table-container::-webkit-scrollbar {
+display: none;
+}
+
+
+table {
+width: 100%;
+border-collapse: collapse;
+text-align: center;
+overflow-y: auto;
+position: relative;
+}
+
+th,
+td {
+border: 1.5px solid #ee7f22;
+text-align: center;
+padding: 5px;
+}
+
+thead th {
+background-color: #312e5d;
+padding: 5px;
+color: white;
+height: 40px;
+font-size: 12px;
+position: sticky;
+top: 0;
+z-index: 3;
+}
+
+th svg {
+margin-top: 3px;
+}
+
+tbody {
+max-height: 400px;
+overflow-y: hidden;
+}
+
+// td {
+//   background-color: #f9f9f9;
+//   text-align: left;
+//   padding: 5px;
+//   font-size: 14px;
+// }
+
+
+td {
+background-color: #f9f9f9;
+text-align: center;
+justify-content: center;
+font-size: 14px;
+padding: auto;
+height: 50px; /* Adjusts height based on content */
+min-height: 20px; /* Ensures small text does not collapse height */
+}
+
+
+
+
+td:nth-child(1),
+td:nth-child(2) {
+background-color: #f9f9f9;
+
+}
+
+td:nth-child(3),
+td:nth-child(4) {
+// background-color: #f5ca94;
+background-color: #f9f9f9;
+}
+
+// yes or no section
+
+.icon {
+display: inline-block;
+font-size: 16px;
+cursor: pointer;
+padding: 5px;
+}
+
+.green-tick svg path {
+stroke: green;
+/* Green color for the tick */
+}
+
+.red-cross svg path {
+stroke: red;
+/* Red color for the cross */
+}
+
+.default-icon {
+color: #ccc;
+/* Default color for unselected options */
+}
+
+// button section
+
+button {
+padding: 10px 10px;
+background-color: #ee7f22;
+color: white;
+border: none;
+text-align: center;
+font-size: 13px;
+// font-weight: 800;
+border-radius: 5px;
+// margin-top: 10px;
+cursor: pointer;
+}
+
+.button-container {
+text-align: center;
+}
+
+.disabled-button {
+background-color: #ccc;
+border-radius: 10px;
+// padding: 10px;
+color: #666;
+cursor: not-allowed;
+}
+.worker{
+width:32px;
+}
+
+.circles{
+width: 20px;
+}
+.circle{
+width: 18px;
+}
+.download{
+width:24px;
+cursor: pointer;
+}
+
+
+///////////////////////////////////////nav bar//////////////////////////////
+
+//////pop logout/////
+.popup-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+display: none; /* Initially hidden */
+justify-content: center;
+align-items: center;
+z-index: 9999; /* Ensure it appears on top */
+}
+
+.popup-overlay.show {
+display: flex; /* Show the popup when the class 'show' is added */
+}
+
+.popup-content {
+background-color: #fff;
+border: 2px solid #ee7f22;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+max-width: 400px;
+text-align: center;
+animation: popupAnimation 0.3s ease-in-out;
+}
+
+@keyframes popupAnimation {
+0% {
+  transform: scale(0.7);
+}
+100% {
+  transform: scale(1);
+}
+}
+
+.popup-content p {
+margin-bottom: 20px;
+font-size: 16px;
+color: #393667;
+}
+
+.popup-buttons {
+display: flex;
+justify-content: space-around;
+}
+
+.popup-buttons button {
+padding: 10px 20px;
+font-size: 16px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.popup-buttons .confirm {
+background-color: #393667;
+color: #fff;
+border: 2px solid #ee7f22;
+
+}
+
+.popup-buttons .cancel {
+background-color: #393667;
+color: #fff;
+border: 2px solid #ee7f22;
+
+}
+.popup-buttons .confirm:hover,
+.popup-buttons .cancel:hover {
+background-color: #ee7f22; /* Change to orange on hover */
+color: #fff;
+border-color: #393667; /* Slightly lighter orange border */
+}
+// .popup-buttons .confirm:hover{
+//   background-color: #ee7f22;
+//   color: #fff;
+//   border: 2px solid #ee7f22;
+
+// }
+
+// .popup-buttons .cancel:hover {
+//   background-color: #ee7f22;
+//   color: #fff;
+//       border: 2px solid #ee7f22;
+
+// }
+
+/* Blur effect for the background */
+.popup-background-blur {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+backdrop-filter: blur(10px); /* Blur effect */
+z-index: 1000; /* Behind the popup */
+}
+
+
+/* manage-account-popup.component.css */
+.popup1 {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+z-index: 1001; /* Make sure the popup is above the blurred background */
+width: 400px;
+padding: 20px;
+animation: fadeIn 0.3s ease-in-out;
+border: 2px solid #ee7f22;
+}
+
+.popup-content1 {
+position: relative;
+}
+
+/* Align close button to the top-right corner */
+.close1 {
+position: absolute;
+top: -14px; /* Distance from the top */
+right: -14px; /* Distance from the right */
+font-size: 34px;
+color: #c82333;
+cursor: pointer;
+}
+
+
+.form-container {
+text-align: center;
+}
+
+.form-container h2 {
+margin-bottom: 20px;
+font-size: 24px;
+color: #39346b;
+}
+
+.form-group {
+margin-bottom: 15px;
+text-align: left;
+}
+
+.form-group label {
+display: block;
+font-size: 14px;
+font-weight: bold;
+color: #393667;
+margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+width: calc(100% - 10px);
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #ee7f22;
+font-size: 14px;
+color: #393667;
+}
+.form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="password"]:hover,
+.form-group input[type="file"]:hover {
+border: 1px solid #393667;
+
+}
+
+.password-group {
+position: relative;
+}
+
+.toggle-password {
+position: absolute;
+top: 54%;
+right: 10px;
+transform: translateY(-50%);
+cursor: pointer;
+}
+
+.toggle-password i {
+font-size: 16px;
+color: #393667;
+}
+
+.image-preview img {
+margin-top: 10px;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.form-group button {
+width: 100%;
+padding: 10px;
+background-color: #007bff;
+border: none;
+color: #393667;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.icons{
+width: 30px;
+}
+.icons {
+display: inline-block;
+font-size: 16px;
+cursor: pointer;
+padding: 5px;
+margin-right:-60px;
+}
+
+
+.zoom{
+width:20px;
+cursor: pointer;
+margin-right:-60px;
+}
+
+.skeleton-box {
+background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+background-size: 200% 100%;
+animation: shimmer 1.5s infinite linear;
+height: 20px;
+border-radius: 4px;
+width: 100%;
+}
+
+.download-btns {
+width: 30px;
+height: 30px;
+margin-left: 90px;
+}
+
+@keyframes shimmer {
+0% { background-position: -200% 0; }
+100% { background-position: 200% 0; }
+}

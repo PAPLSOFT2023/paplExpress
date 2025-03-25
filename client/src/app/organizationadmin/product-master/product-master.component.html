@@ -1,0 +1,128 @@
+<!-- <h2>Product Master</h2>
+
+<div>
+  <label for="productName">Product Name:</label>
+  <input [(ngModel)]="productName" id="productName" />
+</div>
+<div>
+  <label for="typeId">Select Type:</label>
+  <select [(ngModel)]="selectedTypeId" id="typeId">
+    <option *ngFor="let type of types" [value]="type.id">{{ type.type_name }}</option>
+  </select>
+</div>
+<button (click)="addProduct()">Add Product</button>
+
+<h3>Existing Products</h3>
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.product_name }} (Type: {{ product.type_name }})
+    <button (click)="setUpdateProduct(product)">Edit</button>
+    <button (click)="deleteProduct(product.id)">Delete</button>
+  </li>
+</ul>
+
+
+<div *ngIf="isUpdating">
+  <h3>Update Product</h3>
+  <label for="updateProductName">New Product Name:</label>
+  <input [(ngModel)]="updateProductName" id="updateProductName" />
+  <div>
+    <label for="updateTypeId">Select Type:</label>
+    <select [(ngModel)]="selectedTypeId" id="updateTypeId">
+      <option *ngFor="let type of types" [value]="type.id">{{ type.type_name }}</option>
+    </select>
+  </div>
+  <button (click)="updateProduct()">Update Product</button>
+  <button (click)="cancelUpdate()">Cancel</button>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+<div class="container">
+  <header class="header">
+    <h1>Product Master</h1>
+    <div class="search-box">
+      <button class="btn-search"><i class="fas fa-search"></i></button>
+      <input type="text" class="input-search" placeholder="Type to Search..." />
+    </div>
+  </header>
+
+  <main class="content">
+    <h2>Product Master</h2>
+    <br />
+    <hr />
+    <br />
+
+    <div class="add-user-container">
+      <button class="add-user-button" (click)="openPopup()">
+        <i class="fas fa-plus"></i>Add Product Master
+      </button>
+    </div>
+
+    <!-- Display Users in a Table -->
+    <div class="table-responsive">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>S.NO</th>
+            <th>Product Names</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let type of types">
+            <td>{{ type.organization_id }}</td>
+            <td>{{ type.type_name }}</td>
+            <td>
+              <button class="edit-btn" (click)="openEditPopup(type)">
+                <i class="fas fa-edit" title="EDIT"></i>
+              </button>
+              <button class="delete-btn"(click)="deleteType(type.id)">
+                <i class="fas fa-trash-alt" title="DELETE"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+    <!-- Add/Edit Popup -->
+<div class="popup-container" *ngIf="isPopupVisible || isEditPopupVisible">
+  <div class="popup-content">
+    <h2 class="popup-title" style="color: black;">
+      {{ isEditPopupVisible ? 'Edit Product Master' : 'Add Product Master' }}
+    </h2>
+    <i class="fa fa-times cancel-icon" (click)="closePopup()"></i>
+
+    <form (ngSubmit)="isEditPopupVisible ? updateType() : addType()">
+      <label for="typeName">{{ isEditPopupVisible ? 'Edit' : 'Add' }} Product Name:</label>
+      <input
+      type="text"
+      id="typeName"
+      [(ngModel)]="currentTypeName"
+      name="typeName"
+      placeholder="Enter type name"
+      required
+    />
+      <label for="organization">Select Type:</label>
+      <select id="organization" [(ngModel)]="selectedOrganizationId" name="organization" required>
+        <option value="" disabled>Select an organization</option>
+        <option *ngFor="let org of organizations" [value]="org.id">{{ org.organization_name }}</option>
+      </select>
+
+      <div class="popup-buttons33">
+        <button type="submit" class="confirm">
+          <i class="fa fa-check"></i> {{ isEditPopupVisible ? 'Update' : 'Add' }} Product 
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

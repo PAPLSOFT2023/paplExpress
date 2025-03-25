@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <div class="container">
+        <div class="loader-container" *ngIf="isLoading">
+            <div class="icon logo">
+              <div class="loader"></div>
+            </div>
+          </div>
+      
+    
+        <header class="header">
+            <h1>Bulk Download</h1>
+           
+            <div class="search-box">
+                <button class="btn-search"><i class="fas fa-search"></i></button>
+                <input type="text" #searchInput (input)="filterUnits(searchInput.value)" placeholder="Search units..." class="input-search"/>
+            </div>
+            
+            
+        </header>
+       
+        <main class="content">
+            <h2>Bulk Download</h2>
+            
+            <br>
+            <hr>
+            <br>
+
+<div class="table-responsive">
+  <table class="styled-table">
+    
+    <thead>
+        <tr>
+            <th>S.NO</th>
+            <th>DOCUMENT ID</th>
+            <th>CONTRACT NO</th>
+            <th>UNIT NO'S</th>
+            <th>INSPECTOR NAME</th>
+            <th>BUILDING NAME</th>
+            <th>FROM & TO DATE</th>
+            <th>ACTION</th>
+        </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let unit of filteredUnitDetails; let i = index">
+        <td>{{ i + 1 }}</td> <!-- Serial number -->
+        <td>{{ unit.document_id }}</td>
+        <td>{{ unit.contract_number }}</td>
+        <td>{{ unit.unit_no }}</td>
+        <td>{{ unit.inspector_name }}</td>
+        <td>{{ unit.building_name}}</td>
+        <td>{{ unit.formattedDateRange }}</td>
+       
+        <td>
+            <i class="fas fa-hand-pointer" (click)="downloadDocuments(unit.document_id)" title="Click me"></i>
+        </td>
+    </tr>
+    
+   
+  </tbody>
+  </table>
+</div>
+
+
+
+<div *ngIf="isModalOpen" class="modal-overlay">
+<div class="modal">
+    
+    ,    
+    <div class="modal-header">
+        <h2>Select Unit</h2>
+        <span class="close-btn" title="CLOSE" (click)="closeModal()">&times;</span>
+    </div>
+
+    <!-- Modal Body with Form -->
+    <div class="modal-body">
+        <!-- "Select All" Checkbox Centered Below the Header -->
+        <div class="select-all-container">
+            <label>
+                <input type="checkbox" class="selectall" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+                Select All
+            </label>
+        </div>
+        
+        <!-- Dynamically generate checkboxes for unit_no -->
+        <div class="unit-checkboxes">
+            <label *ngFor="let unit of unit_no; let i = index">
+                <input type="checkbox" [(ngModel)]="selectedUnits[unit]" [value]="unit" />
+                {{ unit }}
+            </label>
+        </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+        <div class="loader-container" *ngIf="isLoading">
+            <div class="icon logo">
+                <div class="loader"></div>
+            </div>
+        </div>
+        <button class="btn-submit" (click)="downloadDocuments(document_id)" [disabled]="isLoading">
+            DOWNLOAD EXCEL
+        </button>
+    </div>
+</div>
+</div>
+
+

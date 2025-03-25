@@ -1,0 +1,226 @@
+
+   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="opening-meeting">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="left-section">
+     <div class="logo">
+      <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+     </div>
+     
+     <div class="logo-separator"></div>
+     <div class="logo-name">
+      <img class="logo-watch" src="/assets/inspector bl.png" alt="">
+      <span class="name">INSPECTOR DASHBOARD</span>
+     </div>
+    </div>
+    <div class="right-section">
+      <img class="icons" src="/assets/home22.png" alt="" (click)="navigateHome()">
+     <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+    
+     <div class="emoji-icon">
+       <!-- Dynamic Image Preview -->
+ <img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+ 
+ 
+ 
+ 
+   </div>
+ 
+   <div class="dropdown">
+       <!-- Dropdown Button -->
+       <button class="dropbtn" (click)="toggleDropdown()">
+           <i class="fas fa-chevron-down"></i>
+       </button>
+ 
+       <!-- Dropdown Content -->
+       <div class="dropdown-content" [class.show]="dropdownVisible">
+         <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+           <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+       </div>
+ </div>
+ 
+     
+    </div>
+   </nav>
+ 
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="timeline">
+        <div class="timeline-item">
+          <img class="icon" src="/assets/HOME DOCUMENT.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="logo-watch" src="/assets/Watch Circle Time.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/FULL ICON.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/FULL DOCUMENT.png" alt="">
+        </div>
+      </div>
+      <div class="main-container">
+        <div class="inner-container">
+          <div class="worker-info">
+            <img class="worker" src="/assets/qr-code.png" alt="Worker Icon">
+            <h4>QR CODE DOWNLOAD</h4>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>S.NO</th>
+                  <!-- <th>INSPECTOR NAME</th> -->
+                  <th>CONTRACT NO</th>
+                  <th>DOCUMENT ID</th>
+                  <th>PROJECT NAME</th>
+                  <th>BUILDING NAME</th>
+                  <th>UNIT NAME</th>
+                  <th>DOWNLOAD</th>
+                </tr>
+              </thead>
+              <tbody>
+                          <!-- Skeleton Loader Rows -->
+                          <ng-container *ngIf="isLoading">
+
+          <tr *ngFor="let item of [1,2,3,4,5]">
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box"></div></td>
+            <td><div class="skeleton-box download-btns"></div></td>
+          </tr>
+        </ng-container>
+          <ng-container *ngIf="!isLoading">
+
+                <tr   *ngFor="let certificate of filteredCertificates; let i = index">
+                  <td>{{ i + 1 }}</td> 
+              <!-- <td>{{ certificate.inspector_name }}</td> -->
+              <td>{{ certificate.contract }}</td>
+              <td>{{ certificate.document_id }}</td>
+              <td>{{ certificate.project_name }}</td>
+              <td>{{ certificate.building_name }}</td>
+              <td>{{ certificate.unit_name }}</td>
+                  <td>
+                    <img class="download" (click)="generateQRCode(certificate.unit_name, certificate.document_id)" src="/assets/apps.png" alt="Worker Icon">
+                  </td>
+              </tr>
+            </ng-container>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <!-- <div class="button-container">
+          <button>
+            Proceed
+          </button>
+        </div> -->
+      </div>
+
+
+  </div>
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" (click)="closeModal()">×</button>
+        <div *ngIf="isLoading" class="loading-spinner"></div>
+        <div class="qr-code-container" *ngIf="qrCodeImageUrl && !isLoading">
+        <p class="qr-instruction">Scan the QR code to view the certificate:</p>
+        <img [src]="qrCodeImageUrl" alt="QR Code" class="qr-code" />
+          <img src="assets/carp.jpg" alt="Logo" class="qr-logo" />
+      </div>
+        <button
+        *ngIf="qrCodeImageUrl && !isLoading"
+        class="download-btn"
+        (click)="downloadQRCode()"
+      >
+        Download QR Code
+      </button>
+    </div>
+  </div>
+
+<!-- ///////////pop for manage account form update html code /////////////////// -->
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+              <button 
+              type="submit" 
+              [disabled]="!formData.password || !formData.picture" 
+              [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#ee7f22', 
+              'color': !formData.password || !formData.picture ? '#666' : '#393667'}"
+              [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+            >
+            Update Account
+  </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons">
+          <button class="confirm" (click)="confirmLogout()">
+             Yes
+          </button>
+          <button class="cancel" (click)="closePopup()">
+             No
+          </button>
+      </div>
+  </div>
+    </div>

@@ -1,0 +1,16 @@
+
+<!-- pdf-compress.component.html -->
+<div>
+    <h2>PDF Compressor</h2>
+    
+    <input type="file" (change)="onFileSelected($event)" />
+    
+    <button (click)="onUpload()" [disabled]="isCompressing">Compress PDF</button>
+    
+    <div *ngIf="isCompressing">Compressing...</div>
+    
+    <div *ngIf="errorMessage" style="color: red;">
+      {{ errorMessage }}
+    </div>
+  </div>
+  

@@ -1,0 +1,623 @@
+
+
+*  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevents page scroll */
+}
+
+/* Background styling */
+* .onsite-risk {
+  height: 100vh;
+ background: url("/assets/opening meeting.png") no-repeat center
+    center/cover; 
+  background-color: #3b3765;
+}  
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px;
+  background-color: #ffffff;
+  color: white;
+}
+
+.logo img {
+  width:40px;
+  height: 38px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-separator {
+  height: 40px;
+  width: 2px;
+  background-color: #3b3765;
+  position: absolute;
+  margin-left: 46px;
+}
+.logo-watch{
+  height: 30px;
+  width: 30px;
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.sales-logo {
+  border: 2px solid #3b3765;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.logo-name .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ee7f22;
+  margin-left: 5px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+}
+
+/* Right-side elements */
+.header-right {
+  position: absolute;
+  right: 15px; /* Align to the right side */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}
+
+/* Administrator section */
+.emoji-icon {
+  display: flex;
+  align-items: center;
+  color: #ee7f22;
+  font-size: 18px;
+  margin-right:-60px;
+  font-weight: bold;
+  gap: 5px;
+}
+/* Style for the admin image */
+.admin-image {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  margin-right: 5px; /* Space between the image and text */
+  vertical-align: middle; /* Aligns the image with the text */
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 140%;
+  background-color: #f9f9f9;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-content.show {
+  display: block;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+  color: black;
+  padding:10px 10px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+}
+
+/* Hover effect on dropdown links */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.login-buttons .btn:hover {
+  background-color: #e0e0e0;
+}
+.span-login {
+  font-size: 14px;
+  color: #3b3765;
+  font-weight: 500;
+  margin-left: 13px;
+  position: relative; /* Add this for the 'top' property to work */
+  top: -7px;
+}
+
+
+.container {
+width: 694px;
+height: 508px;
+padding: 20px;
+background-color: #3b3765;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+align-items: center;
+justify-content: center;
+overflow-y: auto;
+overflow-x:hidden;
+
+/* Center the container */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.container::-webkit-scrollbar {
+  /* width: 8px; */
+  display: none;
+}
+/* ✅ Each Box (Card) */
+.card {
+  width: 100%;
+  max-width: 500px;
+  // background-color: #dcdcdc;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: left; /* Align checkbox & text */
+  justify-content: start;
+  flex-direction:row;
+  position: relative;
+  top: 26px;
+  left: 4px;
+  box-shadow:none;
+}
+
+/* Custom Checkbox */
+.card input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ee7f22;
+  border-radius: 4px;
+  margin-bottom: -2px;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+/* Checked State */
+.card input[type="checkbox"]:checked {
+  background-color: #ee7f22;
+  border-color: #ee7f22;
+}
+
+/* Checkmark inside checkbox */
+.card input[type="checkbox"]::before {
+  content: "✔";
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+/* Show checkmark when checked */
+.card input[type="checkbox"]:checked::before {
+  display: block;
+}
+
+/* ✅ Disabled Checkbox Design */
+.card input[type="checkbox"]:disabled {
+  border-color: #ccc !important;
+  background-color: #f0f0f0 !important;
+  cursor: not-allowed;
+}
+
+/* Disabled Checked State */
+.card input[type="checkbox"]:disabled:checked {
+  background-color: #ccc !important;
+}
+
+/* Disabled Checkmark */
+.card input[type="checkbox"]:disabled:checked::before {
+  color: #888 !important;
+}
+
+/* ✅ Text Inside Card */
+.card-text {
+  font-size: 18px;
+  color: #000;
+  margin-left:10px;
+}
+
+.buttons {
+height: 29px;
+width: 7px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 47px;
+}
+
+.buttons button {
+padding: 4px 20px;
+// border: none;
+cursor: pointer;
+font-size: 15px;
+border-radius:4px;
+
+}
+
+
+.about {
+border: 2px solid #fff;
+  background-color: #ee7f22;
+  color: white;
+}
+
+// .proceed {
+//   background-color: #e0e0e0;
+// }
+
+.cancel {
+  border: 2px solid #fff;
+  background-color: #3b3765;
+  color: white;
+}
+.papl-logo {
+position: absolute;
+bottom: 6px;  
+right: 10px;  
+width: 200px; 
+height: auto;  
+z-index: 3;
+}
+
+
+// /* For screens with a max-width of 1024px */
+// @media screen and (max-width: 1024px) {
+// .container {
+//   width: 694px;
+//   height: 448px;
+//   padding: 20px;
+//   background-color: #2d2254;
+//   border-radius: 10px;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+//   align-items: center;
+//   justify-content: center;
+
+//   /* Center the container */
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
+// }
+
+// /* For screens with a max-width of 768px */
+// @media screen and (max-width: 768px) {
+//   .container {
+//   width: 500px; /* Adjust width for smaller screens */
+//   height: auto;
+//   padding: 15px;
+// }
+// }
+
+
+  
+///////////////////////////////////////nav bar//////////////////////////////
+
+//////pop logout/////
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it appears on top */
+}
+
+.popup-overlay.show {
+  display: flex; /* Show the popup when the class 'show' is added */
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  max-width: 400px;
+  text-align: center;
+  animation: popupAnimation 0.3s ease-in-out;
+}
+
+@keyframes popupAnimation {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+.popup-content h3 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #3b3765;
+}
+
+
+.popup-buttons1 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-buttons1 button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.popup-buttons1 .confirms {
+  background-color: #ee7f22;
+  color: #fff;
+}
+
+.popup-buttons1 .cancels {
+  background-color: #3b3765;
+  color: #fff;
+}
+
+.popup-buttons1 .confirm {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.popup-buttons1 .cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.popup-buttons1 button i {
+  margin-right: 5px;
+}
+
+
+/* Blur effect for the background */
+.popup-background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+  backdrop-filter: blur(10px); /* Blur effect */
+  z-index: 1000; /* Behind the popup */
+}
+
+
+/* manage-account-popup.component.css */
+.popup1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Make sure the popup is above the blurred background */
+  width: 400px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content1 {
+  position: relative;
+}
+
+/* Align close button to the top-right corner */
+.close1 {
+  position: absolute;
+  top: 5px; /* Distance from the top */
+  right: 10px; /* Distance from the right */
+  font-size: 34px;
+  color: #c82333;
+  cursor: pointer;
+}
+
+
+.form-container {
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 16px;
+  color: #999;
+}
+
+.image-preview img {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+.zoom{
+  width:16px;
+  cursor: pointer;
+  margin-right:-60px;
+}
+
+/* Adjusted Text Area Styling */
+textarea {
+  width: 300px; /* Increase width */
+  height: 90px; /* Increase height */
+  padding: 15px; /* Add more padding for better usability */
+  font-size: 1.2rem; /* Slightly larger font for better readability */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  resize: vertical; /* Allow the user to resize the height */
+}
+
+/* Maintain Text Area Container Alignment */
+.text-area-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  margin-left: 20px;
+}
+.popup-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  border: 2px solid #ee7f22;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.popup-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.popup-buttons button{
+  width: 20%;
+}
+.yes-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.no-button {
+  background-color: #f44336;
+  color: white;
+}

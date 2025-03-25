@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduled Jobs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="onsite-risk">
+      <nav class="navbar">
+        <div class="left-section">
+         <div class="logo">
+          <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+         </div>
+         
+         <div class="logo-separator"></div>
+         <div class="logo-name">
+          <img class="logo-watch" src="/assets/inspector bl.png" alt="">
+          <span class="name">INSPECTOR DASHBOARD</span>
+         </div>
+        </div>
+        <div class="right-section">
+          <img class="icons" src="/assets/home22.png" alt="" (click)="navigateHome()">
+         <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+        
+         <div class="emoji-icon">
+           <!-- Dynamic Image Preview -->
+     <img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+     
+     
+     
+     
+       </div>
+     
+       <div class="dropdown">
+           <!-- Dropdown Button -->
+           <button class="dropbtn" (click)="toggleDropdown()">
+               <i class="fas fa-chevron-down"></i>
+           </button>
+     
+           <!-- Dropdown Content -->
+           <div class="dropdown-content" [class.show]="dropdownVisible">
+             <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+               <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+           </div>
+     </div>
+     
+         
+        </div>
+       </nav>
+        <div class="hero-section">
+  <div class="hero">
+    <div class="timeline">
+        <div class="timeline-item">
+          <img class="icon" src="/assets/HOME DOCUMENT.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="logo-watch" src="/assets/Watch Circle Time.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/FULL ICON.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/FULL DOCUMENT.png" alt="">
+        </div>
+      </div>
+    </div>
+            <div class="main-container" >
+                <div class="inner-container">
+                    <div class="left-section" *ngFor="let report of incompleteReports" (click)="navigateToReportDetail(report.contract_number, report.document_id, report.parsedUnitNos)">
+                      <ng-container *ngIf="isLoading">
+                        <div class="skeleton-card">
+                            <div class="skeleton skeleton-card-header"></div>
+                            <div class="skeleton skeleton-icon-text"></div>
+                            <div class="skeleton skeleton-icon-text"></div>
+                            <div class="skeleton skeleton-icon-text"></div>
+                            <div class="skeleton skeleton-icon-text"></div>
+                        </div>
+                      </ng-container>
+                  
+                      <ng-container *ngIf="!isLoading">
+                        <div class="card" *ngIf="report.inspector_name===inspector_name">
+                            <div class="card-header">{{ replaceHyphenWithSlash(report.contract_number) }}</div>
+                            <div class="icon-text">
+                                <img src="/assets/worker 2.png" alt="Building Icon" class="icon-img">
+                                <p>Inspector:{{ report.inspector_name }}</p>
+                            </div>
+                            <div class="icon-text">
+                                <img src="/assets/Lift.png" alt="Building Icon" class="icon-img">
+                                <p>Units: {{ formatUnits(report.parsedUnitNos) }}</p>
+                              </div>
+                              
+                            <div class="icon-text">
+                                <img src="/assets/building 2.png" alt="Building Icon" class="icon-img">
+                                <p>Building Name:{{ report.building_name }}</p>
+                            </div>
+                            <div class="icon-text">
+                                <img src="/assets/document 2.png" alt="Building Icon" class="icon-img">
+                                <p>Document Id:{{ report.document_id }}</p>
+                            </div>
+                        </div>    
+                      </ng-container>
+             
+                    </div>
+                </div>
+                <img  class="papl-logo" src="assets/papl_logo_sample 3.png" alt=""> 
+            </div>
+        </div> 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<div [class.blur]="containerVisible">  
+    <div class="blur-overlay" *ngIf="containerVisible">
+  
+    <div class="floating-container" [ngClass]="{'visible': containerVisible}">
+      <div class="container-content">
+        <span class="close-icon" (click)="cancel()">
+          &times;
+        </span>
+        <h2 class="title">Select Unit For Generate Report</h2>
+  
+        <div class="horizontal-checkpoints">
+          <div class="checkpoint" *ngFor="let unit of unit_array; let i=index">
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox" (change)="handleCheckpoint($event, i,unit)">
+              <span class="checkbox-custom"></span>
+              <span class="unit-name">{{unit}}</span>
+            </label>
+          </div>
+         
+        </div>
+  
+        <div class="button-container">
+          <button id="proceed-btn"  style="font-weight: bolder;"  class="proceed-btn" [disabled]="!isAnyCheckboxChecked" (click)="navigateToNavigateComponent()">Proceed</button>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="script.js"></script>
+</div>
+
+
+</body>
+
+</html> 
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+              <button 
+              type="submit" 
+              [disabled]="!formData.password || !formData.picture" 
+              [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#ee7f22', 
+              'color': !formData.password || !formData.picture ? '#666' : '#393667'}"
+              [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+            >
+            Update Account
+  </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons">
+          <button class="confirm" (click)="confirmLogout()">
+             Yes
+          </button>
+          <button class="cancel" (click)="closePopup()">
+             No
+          </button>
+      </div>
+  </div>
+    </div>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>BASIC DATA</title>
+</head>
+<body>
+  <div class="opening-meeting">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="left-section">
+       <div class="logo">
+        <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+       </div>
+       
+       <div class="logo-separator"></div>
+       <div class="logo-name">
+        <img class="logo-watch" src="/assets/inspector bl.png" alt="">
+        <span class="name">INSPECTOR DASHBOARD</span>
+       </div>
+      </div>
+      <div class="right-section">
+        <img class="icons" src="/assets/home22.png" alt="" (click)="navigateHome()">
+       <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+      
+       <div class="emoji-icon">
+         <!-- Dynamic Image Preview -->
+   <img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+   
+   
+   
+   
+     </div>
+   
+     <div class="dropdown">
+         <!-- Dropdown Button -->
+         <button class="dropbtn" (click)="toggleDropdown()">
+             <i class="fas fa-chevron-down"></i>
+         </button>
+   
+         <!-- Dropdown Content -->
+         <div class="dropdown-content" [class.show]="dropdownVisible">
+           <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+             <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+         </div>
+   </div>
+   
+       
+      </div>
+     </nav>
+   
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="timeline">
+        <div class="timeline-item">
+          <img class="icon" src="/assets/HOME DOCUMENT.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="logo-watch" src="/assets/Watch Circle Time.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/Icon.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/document.png" alt="">
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="location">
+          <img src="/assets/locations.png" alt="Location Icon"> 
+          <span class="city-name">{{inf_26.location}}</span>
+        </div>
+        <div class="project-name">
+          {{inf_26.project_name}}
+        </div> 
+        <div class="inner-container">
+          <button class="inner-button">SHIFT</button>
+          <div class="details">
+            <!-- <span class="shift">GENERAL</span>
+            <span class="divider"></span> -->
+            <span class="time">{{inf_26.inspection_time_ins}}</span>
+          </div>
+          <div class="upload-img">
+            <img class="image" src="/assets/imagess.png" alt="" (click)="showFloatingContainer()">
+            <img class="upload" src="/assets/upload.png" alt="" (click)="showFloatingContainer()">
+          </div>
+          
+          
+          <div class="units-total">
+            <span class="units">Total Units</span>
+            <span class="total" (click)="openDialog1()">{{recordCount}}</span>
+          </div>
+          <!-- <img class="plus" src="/assets/BASIC plus.png" alt="">         -->
+        </div>
+        <button class="outer-button" [class.disabled-button]="!isPlusClicked" [disabled]="!isPlusClicked" (click)="view()">Proceed</button>
+              
+      </div>
+      <img  class="papl-logo" src="/assets/papl_logo_sample copy.png" alt="">
+    </div>
+   </div>
+   
+   <div class="background-blur" *ngIf="showContainer"></div>
+   
+   <div *ngIf="showContainer" class="floating-container">
+       <div class="close-btn" (click)="closeContainer()" title="Close">&times;</div>
+
+       <h2 style="font-size: 19px; ">
+           <i class="fas fa-image"></i> CHOOSE A PICTURE
+       </h2>
+       
+       <input type="file" (change)="onFileChanged($event)" class="file_choose" name="images">
+       <button class="button" style="margin-top: 80px;" (click)="submitFile()">
+          SUBMIT
+       </button>
+       
+   </div>
+   
+
+</body>
+</html>
+
+<!-- ///////////pop for manage account form update html code /////////////////// -->
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+              <button 
+              type="submit" 
+              [disabled]="!formData.password || !formData.picture" 
+              [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#ee7f22', 
+              'color': !formData.password || !formData.picture ? '#666' : '#393667'}"
+              [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+            >
+            Update Account
+  </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons">
+          <button class="confirm" (click)="confirmLogout()">
+              Yes
+          </button>
+          <button class="cancel" (click)="closePopup3()">
+              No
+          </button>
+      </div>
+  </div>
+    </div>

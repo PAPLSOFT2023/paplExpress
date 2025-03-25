@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="onsite-risk">
+        <nav class="navbar">
+            <div class="left-section">
+             <div class="logo">
+              <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+             </div>
+             <div class="logo-separator"></div>
+             <div class="logo-name">
+              <img class="logo-watch" src="/assets/Watch Circle Time.png" alt="">
+              <span class="name">SCHEDULED JOBS</span>
+             </div>
+            </div>
+            <div class="right-section">
+             <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+         
+             <div class="emoji-icon">
+               <!-- Dynamic Image Preview -->
+         <img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+         
+         
+         
+         
+           </div>
+         
+           <div class="dropdown">
+               <!-- Dropdown Button -->
+               <button class="dropbtn" (click)="toggleDropdown()">
+                   <i class="fas fa-chevron-down"></i>
+               </button>
+         
+               <!-- Dropdown Content -->
+               <div class="dropdown-content" [class.show]="dropdownVisible">
+                   <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+                   <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+               </div>
+         </div>
+         
+             
+            </div>
+           </nav>
+           <div class="container">
+           <div class="card" *ngFor="let reason of reason; let i = index">
+            <label>
+                <input type="checkbox"  type="checkbox" [(ngModel)]="reason.selected" (change)="onCheckboxChange(reason, i)" />
+                <span class="card-text">{{ reason.reason }}</span>
+            </label>
+        
+            <!-- <div *ngIf="reason.reason === 'Scheduled Units Not Ready' && reason.selected" class="checkbox-container">
+            
+                <div *ngFor="let _ of [].constructor(total_units_schedule); let m = index"   style="margin-left: 30px;" >
+                  <label>
+                    <input type="checkbox" [(ngModel)]="scheduledUnits[m]" />  Unit {{ m + 1 }}
+                  </label>
+                </div>
+              </div> -->
+        
+            <div *ngIf="reason.reason === 'INF Data Incompatible' && reason.selected" class="text-area-container">
+                <textarea [(ngModel)]="reason.additionalInfo" (ngModelChange)="updateAdditionalInfo(reason)"
+                    placeholder="Provide additional information..." rows="4" cols="30">
+                </textarea>
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="abort-button" (click)="openPopup()" 
+            [disabled]="!isAnyCheckboxSelected()"
+            [ngStyle]="{
+              'background-color': isAnyCheckboxSelected() ? '#ee7f22' : 'grey', 
+              'color': 'white', 
+              'cursor': isAnyCheckboxSelected() ? 'pointer' : 'not-allowed', 
+              'opacity': isAnyCheckboxSelected() ? '1' : '0.6'
+            }">
+      Abort
+    </button>            <!-- <button class="proceed" (click)="proceed()">Proceed</button> -->
+            <button class="cancel" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+
+        <!-- <img class="papl-logo" src="/assets/papl_logo_sample copy.png" alt="PAPL Logo">  -->
+    </div>
+
+</body>
+</html>
+<div *ngIf="isPopupVisible" class="popup-container">
+    <div class="popup-content">
+        <h3>Are you sure you want to abort?</h3>
+        <div class="popup-buttons1">
+            <button class="confirms" (click)="confirmAbort()">Yes</button>
+            <button class="cancels" (click)="closePopup()">No</button>
+        </div>
+
+    </div>
+    </div>
+
+    
+<!-- ///////////pop for manage account form update html code /////////////////// -->
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+                <button 
+                type="submit" 
+                [disabled]="!formData.password || !formData.picture" 
+                [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#007bff'}"
+                [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+              >
+              Update Account
+    </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons1">
+          <button class="confirm" (click)="confirmLogout()">
+              <i class="fa fa-check"></i> Yes
+          </button>
+          <button class="cancel" (click)="closePopup3()">
+              <i class="fa fa-times"></i> No
+          </button>
+      </div>
+  </div>
+    </div>
+

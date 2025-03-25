@@ -1,0 +1,18 @@
+
+<div *ngIf="isPopupVisible" class="fullscreen-blur">
+  <div class="card-container">
+      <h2 class="dialog-title">Reject Reason</h2>
+      <div class="dialog-content">
+          <label for="reject-reason" class="form-label">Select Reason</label>
+          <select id="reject-reason" class="form-input" [(ngModel)]="selectedReason">
+              <option value="">-- Select Reason --</option>
+              <option *ngFor="let reason of rejectionReasons" [value]="reason">{{ reason }}</option>
+              <!-- <option value="Incomplete Information">Incomplete Information</option>
+              <option value="Other">Other</option> -->
+          </select>
+      </div>
+      <div class="button-container">
+          <button class="submit-button" (click)="reject()" [disabled]="!selectedReason">Reject</button>
+      </div>
+  </div>
+</div>

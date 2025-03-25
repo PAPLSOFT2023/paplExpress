@@ -1,0 +1,764 @@
+     /* Background blur effect */
+     .background-blur {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        backdrop-filter: blur(8px); /* Blur effect */
+        z-index: 10; /* Make sure it's behind the floating container */
+    }
+    
+    /* Floating container */
+    .floating-container {
+        position: fixed;
+        border: 2px solid #ee7f22;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff; /* White background */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        z-index: 11; /* Make sure it's above the blurred background */
+        padding: 40px; /* Padding */
+        text-align: center; /* Center-align content */
+        width: 400px; /* Set the width */
+    }
+    
+    // /* Heading */
+    .floating-container h2 {
+      color: #393667;
+    
+    }
+    
+    // // /* File input */
+    // // .file_choose {
+    // //     display: none; /* Hide the default file input */
+    // // }
+    .file_choose{
+        // background-image: linear-gradient(125deg, #2c3e50 50%,#000000 50%); 
+        border: none;
+        border: 1px solid #ee7f22;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        margin-top: 20px;
+        cursor: pointer;
+        color: #393667;
+        border-radius: 5px;
+    }
+    .file_choose:hover{
+      border: 1px solid #393667;
+    
+    }
+    
+    // .custom-file-input {
+    //     background-color: #007bff; /* Blue background */
+    //     color: #fff; /* White text */
+    //     border: none; /* No border */
+    //     padding: 10px 20px; /* Padding */
+    //     border-radius: 5px; /* Rounded corners */
+    //     cursor: pointer; /* Cursor style */
+    //     margin-bottom: 10px; /* Margin below file input */
+    // }
+    
+    // .custom-file-input:hover {
+    //     background-color: #0056b3; /* Darker blue on hover */
+    // }
+    
+    // /* Selected file name */
+    // .file_sel {
+    //     // display: block;
+    //     margin-top: 10px; /* Margin above selected file name */
+    //     color: #333; /* Black text */
+    //     font-size: 16px; /* Font size */
+    // }
+    
+    /* Submit button */
+    .button {
+        background-color: #ee7f22; /* Green background */
+        color: #fff; /* White text */
+        border: none; /* No border */
+        padding: 10px 20px; /* Padding */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Cursor style */
+    }
+    .close-btn {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        cursor: pointer;
+        font-size: 30px;
+        color: #e00f0f;
+    }
+    
+    // .close-btn:hover {
+    //     color: #010101;
+    // }
+    /* Tooltip style */
+    .close-btn[title]:hover:after {
+        // content: attr(title);
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #080808;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+    
+    // @media screen and (min-width: 600px) {
+    //     body {
+    //         padding: 40px;
+    //     }
+    //     table {
+    //         width: 60%;
+    //     }
+    
+    // }
+    
+    ///////////////////////////////////new//////////////////////////////////
+    
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+      }
+      
+      .opening-meeting {
+        height: 100vh;
+        background-repeat: no-repeat;
+      }
+    /* Navbar Section */
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      height: 60px;
+      background-color: #ffffff;
+      color: white;
+    }
+    
+    .logo img {
+      width:40px;
+      height: 38px;
+      margin-top: 8px;
+      margin-right: 5px;
+    }
+    
+    .left-section {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-separator {
+      height: 40px;
+      width: 2px;
+      background-color: #3b3765;
+      position: absolute;
+      margin-left: 46px;
+    }
+    .logo-watch{
+      height: 30px;
+      width: 30px;
+    }
+    .logo-name {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+    }
+    
+    .sales-logo {
+      border: 2px solid #3b3765;
+      padding-right: 5px;
+      border-radius: 5px;
+    }
+    
+    .logo-name .name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ee7f22;
+      margin-left: 10px;
+    }
+    
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 70px;
+    }
+    
+    /* Right-side elements */
+    .header-right {
+      position: absolute;
+      right: 15px; /* Align to the right side */
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Space between elements */
+    }
+    
+    /* Administrator section */
+    .emoji-icon {
+      display: flex;
+      align-items: center;
+      color: #ee7f22;
+      font-size: 18px;
+      margin-right:-70px;
+      font-weight: bold;
+      gap: 5px;
+    }
+    /* Style for the admin image */
+    .admin-image {
+      width: 30px; /* Adjust the width as needed */
+      height: 30px; /* Adjust the height as needed */
+      border-radius: 50%; /* Makes the image circular */
+      object-fit: cover; /* Ensures the image maintains aspect ratio */
+      margin-right: 5px; /* Space between the image and text */
+      vertical-align: middle; /* Aligns the image with the text */
+    }
+    
+    
+      /* Dropdown Button */
+      .dropbtn {
+        background-color: transparent;
+        color: #393667;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px;
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      /* Dropdown Content */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        cursor: pointer;
+        border: 1.5px solid #ee7f22;
+        right: 0;
+        top: 140%;
+        background-color: #f9f9f9;
+        min-width: 170px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+      }
+      
+      .dropdown-content.show {
+        display: block;
+      }
+      
+      /* Dropdown Links */
+      .dropdown-content a {
+        color: #39346b;
+        padding:10px 10px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+      }
+      
+      // /* Hover effect on dropdown links */
+      // .dropdown-content a:hover {
+      //   background-color: #f1f1f1;
+      // }
+      .dropdown-content img{
+        width: 18px;
+        margin-bottom: -3px;
+      }
+      .login-buttons .btn:hover {
+        background-color: #e0e0e0;
+      }
+      
+      
+      .hero {
+        height: calc(100vh - 60px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+        background-image: url("/assets/opening meeting.png");
+        background-size: 100% auto; /* Increases the width to 120% while maintaining the aspect ratio */
+        background-repeat: no-repeat; /* Prevents the background image from repeating */
+        background-position: center; /* Centers the background image */
+      }
+      
+      
+      .timeline {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        width: 30%;
+        max-width: 1000px;
+        position: absolute;
+        top: 90px; 
+        left: 20px; 
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          to right,
+          #ee7f22 0%,    /* Starting color */
+          #ee7f22 35%,   /* White line till 25% */
+          /* // #ee7f22 65%,   White line till 25% */
+          #E3DFDB 25%,    /* Transition to blue */
+          #E3DFDB  100%    /* Blue line till end */
+        );
+        z-index: 1;
+      }
+      .timeline-item {
+        position: relative;
+        z-index: 2;
+        background-color: white;
+        width: 40px;
+        height: 40px; 
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .timeline-item .icon {
+        font-size: 24px;
+        color: #4caf50;
+      }
+      .icon{
+        height: 26px;
+        width: 26px;
+      }
+      button {
+        padding: 10px 20px; 
+      }
+      .container {
+        background-color: #3b3765;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        width: 510px;
+        height: 220px;
+        position: absolute;
+        left: 50px; 
+        top: 220px; 
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+      
+      .location {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 35px; 
+        left: 26px;
+      }
+      
+      .location img {
+        width: 18px; 
+        height: auto; 
+        margin-right: 4px; 
+      }
+      
+      .city-name {
+        color: #fff; 
+        font-size: 14px; 
+        font-weight: bold; 
+      }
+      
+      .project-name {
+        position: absolute;
+        top: 36px; 
+        right: 20px; 
+        color: #726F96;
+        font-size: 14px; 
+        font-weight: bold; 
+      }
+      
+      .inner-container {
+        background-color: #fcfcfc;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+        width: 580px;
+        height: 60px;
+        display: flex; /* Use flexbox for content inside if needed */
+        justify-content: flex-start; /* Align content inside to the left */
+        align-items: center; /* Center content vertically */
+        position: relative;
+        gap: 8px; /* Add spacing between the button and details */
+      }
+      
+      
+      .inner-button {
+        color: #ee7f22;
+        padding: 8px 16px;
+        border: 1px solid #39346B;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      
+      .details {
+        display: flex; /* Flexbox for shift and time */
+        flex-direction: row; /* Stack shift and time vertically */
+        align-items: center; /* Vertically center items */
+        gap: 10px; /* Add spacing between elements */
+        color: #39346B;
+      }
+      
+      .shift {
+        font-size: 16px;
+        /* font-weight: bold; */
+        /* margin-bottom: 4px; Space between shift and time */
+      }
+      
+      .time {
+        font-size: 11px;
+      }
+      .divider {
+        width: 1px; /* Thin vertical line */
+        height: 16px; /* Adjust height to match text */
+        background-color: #39346B; /* Line color */
+      }
+      /* .inner-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+      } */
+      
+      .upload-img {
+        display: flex;
+        justify-content: center;
+        position: relative; /* To position the upload button on top of the image */
+        margin-top: 15px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      
+      .upload-img .image {
+        width: 34px;  /* Adjusted to a smaller size for the image */
+        height: auto;
+        position: relative;
+        margin-bottom:26px;
+      }
+      
+      .upload-img .upload {
+        position: absolute;
+        top: 5px; /* Adjust the position of the upload button */
+        right: -6px; /* Adjust the position of the upload button */
+        width: 14px; /* Smaller size for the upload button */
+        height: auto;
+        margin-top: -6px;
+      }
+      
+      .upload-img .upload:hover {
+        transform: scale(1.2); /* Slight zoom effect on hover */
+      }
+      .units-total {
+        display: flex;
+        justify-content: flex-end; /* Aligns the units and total to the right */
+        margin-top: 10px; /* Adds space above */
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      
+      .units-total .units {
+        margin-right: 10px; /* Space between units and total */
+        font-size: 14px;
+        color: #39346B;
+        margin-top: 6px;
+      }
+      
+      .plus{
+        width: 16px;
+        margin-bottom: 6px;
+        cursor: pointer;
+      }
+    
+      .units-total .total {
+        font-size: 14px;
+        color: #39346B;
+        padding: 5px 10px;
+        border: 1px solid #39346B; /* Border around the total */
+        border-radius: 6px;
+        margin-bottom: 14px; /* Moves only the total */
+      }
+      
+      .outer-button {
+        padding: 10px 20px;
+        color: #39346B;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        width: 20%; 
+        position: absolute;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+        bottom: 20px; /* Aligns the button to the bottom of the container */
+        left: 30px; /* Aligns the button to the left of the container */
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      
+      .outer-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2);
+      }
+      
+      .papl-logo {
+        position: absolute;
+        bottom: 10px;  
+        margin-bottom: 0px;
+        right: 50px;  
+        width: 220px; 
+        height: auto;  
+      }
+    
+      
+    ///////////////////////////////////////nav bar//////////////////////////////
+    
+    //////pop logout/////
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      display: none; /* Initially hidden */
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensure it appears on top */
+    }
+    
+    .popup-overlay.show {
+      display: flex; /* Show the popup when the class 'show' is added */
+    }
+    
+    .popup-content {
+      background-color: #fff;
+      border: 2px solid #ee7f22;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+      max-width: 400px;
+      text-align: center;
+      animation: popupAnimation 0.3s ease-in-out;
+    }
+    
+    @keyframes popupAnimation {
+      0% {
+        transform: scale(0.7);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    .popup-content p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #393667;
+    }
+    
+    .popup-buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .popup-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .popup-buttons .confirm {
+      background-color: #393667;
+      color: #fff;
+      border: 2px solid #ee7f22;
+    
+    }
+    
+    .popup-buttons .cancel {
+      background-color: #393667;
+      color: #fff;
+      border: 2px solid #ee7f22;
+    
+    }
+    .popup-buttons .confirm:hover,
+    .popup-buttons .cancel:hover {
+    background-color: #ee7f22; /* Change to orange on hover */
+    color: #fff;
+    border-color: #393667; /* Slightly lighter orange border */
+    }
+    // .popup-buttons .confirm:hover{
+    //   background-color: #ee7f22;
+    //   color: #fff;
+    //   border: 2px solid #ee7f22;
+    
+    // }
+    
+    // .popup-buttons .cancel:hover {
+    //   background-color: #ee7f22;
+    //   color: #fff;
+    //       border: 2px solid #ee7f22;
+    
+    // }
+    
+    /* Blur effect for the background */
+    .popup-background-blur {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+      backdrop-filter: blur(10px); /* Blur effect */
+      z-index: 1000; /* Behind the popup */
+    }
+    
+    
+    /* manage-account-popup.component.css */
+    .popup1 {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 1001; /* Make sure the popup is above the blurred background */
+      width: 400px;
+      padding: 20px;
+      animation: fadeIn 0.3s ease-in-out;
+      border: 2px solid #ee7f22;
+    }
+    
+    .popup-content1 {
+      position: relative;
+    }
+    
+    /* Align close button to the top-right corner */
+    .close1 {
+      position: absolute;
+      top: -14px; /* Distance from the top */
+      right: -14px; /* Distance from the right */
+      font-size: 34px;
+      color: #c82333;
+      cursor: pointer;
+    }
+    
+    
+    .form-container {
+      text-align: center;
+    }
+    
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #39346b;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      color: #393667;
+      margin-bottom: 5px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="file"] {
+      width: calc(100% - 10px);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ee7f22;
+      font-size: 14px;
+      color: #393667;
+    }
+    .form-group input[type="text"]:hover,
+    .form-group input[type="email"]:hover,
+    .form-group input[type="password"]:hover,
+    .form-group input[type="file"]:hover {
+    border: 1px solid #393667;
+    
+    }
+    
+    .password-group {
+      position: relative;
+    }
+    
+    .toggle-password {
+      position: absolute;
+      top: 54%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    
+    .toggle-password i {
+      font-size: 16px;
+      color: #393667;
+    }
+    
+    .image-preview img {
+      margin-top: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: #393667;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .icons{
+      width: 30px;
+    }
+    .icons {
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 5px;
+      margin-right:-60px;
+    }
+    
+    
+    .zoom{
+      width:20px;
+      cursor: pointer;
+      margin-right:-60px;
+    }

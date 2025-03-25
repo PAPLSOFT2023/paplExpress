@@ -1,0 +1,46 @@
+
+<router-outlet ></router-outlet>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table Layout</title>
+</head>
+<body>
+    <div class="main-container">
+      <div class="container">
+        <div class="navs">
+            <span (click)="back()"><img src="/assets/Back Square.png"></span> 
+            <img src="/assets/papl_logo_sample copy.png" alt="PAPL Logo" class="logo" style="width: 22px;">
+            <h1 class="pit-heading">PIT-{{unit_no}}</h1> 
+            <span (click)="next()"><img src="/assets/iconss.png"></span> 
+        </div>        
+        <ng-container *ngIf="isLoading; else buttonGrid">
+          <div class="grid">
+            <div class="skeleton skeleton-btn" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"></div>
+          </div>
+        </ng-container>
+        <ng-template #buttonGrid>
+
+        <div class="grid">
+            
+            <button class="btn" *ngFor="let step of steps; let i = index"  [ngClass]="{
+              'green':(completedStatus[i] && completedStatus_Index[i]) || completedStatus[i] , 
+              'light-orange': !completedStatus[i] && completedStatus_Index[i],
+              'white': !completedStatus[i] && !completedStatus_Index[i]
+            }"  (click)="handleCardClick(step)">{{ step }}</button>
+      </div>
+    </ng-template>
+
+    </div>
+    <div class="containers">
+        <div class="color-box" style="background-color:white;"></div> <span>Points to be Filled</span>
+        <div class="color-box" style="background-color: #faaa69;"></div> <span>Online Mode</span>
+        <div class="color-box" style="background-color: #B2B3B3;"></div> <span>Offline Mode</span>
+    </div>
+    </div>
+</body>
+</html>
+

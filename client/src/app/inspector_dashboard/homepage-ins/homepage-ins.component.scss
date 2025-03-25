@@ -1,0 +1,534 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .opening-meeting {
+    height: 100vh;
+    background-repeat: no-repeat;
+  }
+  
+/* Navbar Section */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px;
+  background-color: #ffffff;
+  color: white;
+}
+
+.logo img {
+  width:40px;
+  height: 38px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-separator {
+  height: 40px;
+  width: 2px;
+  background-color: #3b3765;
+  position: absolute;
+  margin-left: 46px;
+}
+.logo-watch{
+  height: 30px;
+  width: 30px;
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.sales-logo {
+  border: 2px solid #3b3765;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.logo-name .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ee7f22;
+  margin-left: 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Right-side elements */
+.header-right {
+  position: absolute;
+  right: 15px; /* Align to the right side */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}
+
+/* Administrator section */
+.emoji-icon {
+  display: flex;
+  align-items: center;
+  color: #ee7f22;
+  font-size: 18px;
+  margin-right:-70px;
+  font-weight: bold;
+  gap: 5px;
+}
+/* Style for the admin image */
+.admin-image {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  margin-right: 5px; /* Space between the image and text */
+  vertical-align: middle; /* Aligns the image with the text */
+}
+
+
+  /* Dropdown Button */
+  .dropbtn {
+    background-color: transparent;
+    color: #393667;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    border: 1.5px solid #ee7f22;
+    right: 0;
+    top: 140%;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  /* Dropdown Links */
+  .dropdown-content a {
+    color: #39346b;
+    padding:10px 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+  }
+  
+  // /* Hover effect on dropdown links */
+  // .dropdown-content a:hover {
+  //   background-color: #f1f1f1;
+  // }
+  .dropdown-content img{
+    width: 18px;
+    margin-bottom: -3px;
+  }
+.login-buttons .btn:hover {
+  background-color: #e0e0e0;
+}
+  .hero {
+    // position: relative; /* Enables absolute positioning for child elements */
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column; /* Stacks the elements vertically */
+    justify-content: center; /* Keeps elements at the top */
+    align-items: center;
+    text-align: center;
+    background-image: url("/assets/opening meeting.png");
+    background-size: 100% auto; /* Increases the width to 120% while maintaining the aspect ratio */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-position: center; /* Centers the background image */
+}
+
+.zoom{
+  width:20px;
+  cursor: pointer;
+  margin-right:-60px;
+}
+.notification {
+  position: relative; /* Ensures it aligns properly within right-section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right:-60px; /* Adjust spacing if needed */
+}
+
+.notification img {
+  width: 100%;
+  height: auto;
+}
+
+.icon-button__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: #ee7f22;
+  color: #39346b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 2px;
+}
+
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 10px;
+  max-height: 550px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1160px;
+  background: #39346b;
+  position: relative;
+  border-radius: 18px;
+
+}
+
+/* Card layout */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 38px;
+  margin-bottom:80px;
+  margin-left: 10px;
+}
+
+/* Card styling */
+.card {
+  background-color: #ffff;
+  // border: 1px solid #ddd;
+  border: 1.5px solid #ee7f22;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 230px;
+  height: 140px;
+  cursor: pointer;
+}
+
+/* Title (Top Left) */
+.card-title {
+  position: absolute;
+  color: #ee7f22;
+  top: 10px;
+  left: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Number (Bottom Left) */
+.card-number {
+  position: absolute;
+  bottom: 10px;
+  color: #393667;
+  left: 17px;
+  font-size: 40px;
+  font-weight: bold;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Icon (Bottom Right) */
+.icon-container img {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  width: 60px; /* Adjust as needed */
+  height: auto;
+}
+
+.ins-img {
+  position: absolute;
+  right: 0px;  /* Positions it in the right corner */
+  bottom: 0px; /* Positions it in the bottom-right corner */
+}
+
+.ins-img img {
+  width:200px;  /* Makes the image responsive */
+  height: auto;
+  margin-right: 12px;
+  margin-bottom:-5px;
+}
+
+
+
+///////////////////////////////////////nav bar//////////////////////////////
+
+//////pop logout/////
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it appears on top */
+  }
+  
+  .popup-overlay.show {
+    display: flex; /* Show the popup when the class 'show' is added */
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    border: 2px solid #ee7f22;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    max-width: 400px;
+    text-align: center;
+    animation: popupAnimation 0.3s ease-in-out;
+  }
+  
+  @keyframes popupAnimation {
+    0% {
+      transform: scale(0.7);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .popup-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #393667;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .popup-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .popup-buttons .confirm {
+    background-color: #393667;
+    color: #fff;
+    border: 2px solid #ee7f22;
+
+  }
+  
+  .popup-buttons .cancel {
+    background-color: #393667;
+    color: #fff;
+    border: 2px solid #ee7f22;
+
+  }
+  .popup-buttons .confirm:hover,
+.popup-buttons .cancel:hover {
+  background-color: #ee7f22; /* Change to orange on hover */
+  color: #fff;
+  border-color: #393667; /* Slightly lighter orange border */
+}
+  // .popup-buttons .confirm:hover{
+  //   background-color: #ee7f22;
+  //   color: #fff;
+  //   border: 2px solid #ee7f22;
+
+  // }
+  
+  // .popup-buttons .cancel:hover {
+  //   background-color: #ee7f22;
+  //   color: #fff;
+  //       border: 2px solid #ee7f22;
+
+  // }
+  
+  /* Blur effect for the background */
+  .popup-background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+    backdrop-filter: blur(10px); /* Blur effect */
+    z-index: 1000; /* Behind the popup */
+  }
+  
+  
+  /* manage-account-popup.component.css */
+  .popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* Make sure the popup is above the blurred background */
+    width: 400px;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+    border: 2px solid #ee7f22;
+  }
+  
+  .popup-content1 {
+    position: relative;
+  }
+  
+  /* Align close button to the top-right corner */
+  .close1 {
+    position: absolute;
+    top: -14px; /* Distance from the top */
+    right: -14px; /* Distance from the right */
+    font-size: 34px;
+    color: #c82333;
+    cursor: pointer;
+  }
+  
+  
+  .form-container {
+    text-align: center;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #39346b;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #393667;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group input[type="file"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ee7f22;
+    font-size: 14px;
+    color: #393667;
+  }
+  .form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="password"]:hover,
+.form-group input[type="file"]:hover {
+  border: 1px solid #393667;
+
+}
+  
+  .password-group {
+    position: relative;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    top: 54%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .toggle-password i {
+    font-size: 16px;
+    color: #393667;
+  }
+  
+  .image-preview img {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #393667;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  
+  .skeleton-loader {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  .skeleton-card {
+    width: 230px;
+    height: 140px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+ 
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  
+  

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>DOUCMENT DOWNLOAD</title>
+</head>
+<body>
+  <div class="opening-meeting">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="left-section">
+       <div class="logo">
+        <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+       </div>
+       
+       <div class="logo-separator"></div>
+       <div class="logo-name">
+        <img class="logo-watch" src="/assets/inspector bl.png" alt="">
+        <span class="name">INSPECTOR DASHBOARD</span>
+       </div>
+      </div>
+      <div class="right-section">
+        <img class="icons" src="/assets/home22.png" alt="" (click)="navigateHome()">
+       <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+      
+       <div class="emoji-icon">
+         <!-- Dynamic Image Preview -->
+   <img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+   
+   
+   
+   
+     </div>
+   
+     <div class="dropdown">
+         <!-- Dropdown Button -->
+         <button class="dropbtn" (click)="toggleDropdown()">
+             <i class="fas fa-chevron-down"></i>
+         </button>
+   
+         <!-- Dropdown Content -->
+         <div class="dropdown-content" [class.show]="dropdownVisible">
+           <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+             <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+         </div>
+   </div>
+   
+       
+      </div>
+     </nav>
+   
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="timeline">
+        <div class="timeline-item">
+          <img class="icon" src="/assets/HOME DOCUMENT.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="logo-watch" src="/assets/Watch Circle Time.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/Icon.png" alt="">
+        </div>
+        <div class="timeline-item">
+          <img class="icon" src="/assets/document.png" alt="">
+        </div>
+      </div>
+      <div class="timeline-item-inquiry">
+        <div class="timeline-content">
+          <p><strong>For inquiries or issues, please contact us at <img class="mail" src="/assets/mail Icon.png" alt=""><a href="mailto:info@paplcorp.com">info@paplcorp.com</a></strong></p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="container-heading">
+          <img src="/assets/worker icon.png" alt="Worker Icon">
+          <h1>INSPECTION CONDUCTED IN PRESENCE OF</h1>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>DESIGNATION</th>
+                <th>ROLE</th>
+                <th>COMPANY</th>
+                <th>CONTACT</th>
+                <th>DIGITAL SIGNATURE</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+              <tr *ngFor="let row of rows; let i = index">
+                <td><input type="text" class="editable-input" [(ngModel)]="row.name" ></td>
+                <td><input type="text" class="editable-input"  [(ngModel)]="row.designation"></td>
+                <td> <select class="dropdown-ins"  [(ngModel)]="row.role" required>
+                  <option value="" disabled selected hidden></option>
+                  <option value="Building Owner">Building Owner</option>
+                    <option value="Inspector">Inspector</option>
+                    <option value="Facility Manager">Facility Manager</option>
+                    <option value="Vendor(OEM)">Vendor(OEM)</option>
+                    <option value="PAPL Team">PAPL Team</option>
+                </select></td>
+                <td><input type="text" class="editable-input"  [(ngModel)]="row.company"></td>
+                <td><input type="tel"
+                  [(ngModel)]="row.contact_number"
+                  name="contactNumber"
+                  required
+                  maxlength="10" 
+                  class="form-control"
+                  #contactNumber="ngModel"
+                  (keypress)="allowOnlyNumbers($event)" 
+                  (input)="validatePhoneNumber($event, i)" >
+                  <div *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)">
+                    <small *ngIf="contactNumber.errors?.['required']" class="text-danger">Phone number is required.</small>
+                  </div>
+                </td>
+                <td>
+                    <div class="signature-pad-container">
+                        <p class="clear-signature-btn" (click)="clearSignature(i)">x</p>
+                        <signature-pad class="signature-pad"  [options]="signaturePadOptions" 
+                        (onEnd)="drawComplete(i)"></signature-pad>
+                        <p class="check-btn">
+                          <i class="fa fa-check" aria-hidden="true" (click)="captureSignature(i)"></i>
+                        </p>
+                      </div>
+                </td>
+              </tr>
+              
+             
+            </tbody>
+          </table>
+      </div>
+      <!-- <div class="btn-container">
+        <button class="btn" (click)="addRow()">Add Row</button>
+        <button class="btn" [class.disabled-button]="!allFieldsFilled()" [disabled]="!allFieldsFilled()" (click)="show()">Proceed</button>
+        <button class="btn" [disabled]="rows.length <= 1" (click)="deleteLastRow()">Clear Row</button>
+      </div> -->
+      <div class="btn-container">
+        <button class="btn" (click)="addRow()">ADD ROW</button>
+        <button class="btn" [disabled]="rows.length <= 1" (click)="deleteLastRow()">CLEAR ROW</button>
+        <button class="btn" [class.disabled-button]="!allFieldsFilled()" [disabled]="!allFieldsFilled()" (click)="show()">PROCEED</button>
+      </div>      
+      <div class="vertical-line"></div>
+      <img class="pic-ins"  src="/assets/opening meeting ins.png" alt="">
+
+    </div>
+    </div>
+   </div>
+</body>
+</html>
+
+<!-- ///////////pop for manage account form update html code /////////////////// -->
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+              <button 
+              type="submit" 
+              [disabled]="!formData.password || !formData.picture" 
+              [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#ee7f22', 
+              'color': !formData.password || !formData.picture ? '#666' : '#393667'}"
+              [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+            >
+            Update Account
+  </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons">
+          <button class="confirm" (click)="confirmLogout()">
+              Yes
+          </button>
+          <button class="cancel" (click)="closePopup()">
+              No
+          </button>
+      </div>
+  </div>
+    </div>

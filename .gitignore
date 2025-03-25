@@ -1,0 +1,65 @@
+# =========================
+# Global Ignore Rules
+# =========================
+
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# Ignore environment files
+.env
+.env.prod
+
+# Ignore Node.js dependencies (Client & Server)
+**/node_modules/
+**/package-lock.json
+**/yarn.lock
+
+# =========================
+# Client-Specific Ignore Rules (Angular)
+# =========================
+
+# Ignore Angular build files
+client/dist/
+client/.angular/
+
+# Firebase related files (If needed)
+client/firebase.json
+client/.firebaserc
+client/database.firebase.rules
+
+# IDE and editor settings
+client/.editorconfig
+client/.vscode/
+client/.idea/
+
+# Large unnecessary file
+client/root@*
+
+# TypeScript build files
+client/tsconfig.tsbuildinfo
+
+# =========================
+# Server-Specific Ignore Rules (Node.js)
+# =========================
+
+# Build and compiled files
+server/dist/
+
+# Ignore assets and temp files
+server/assets/
+server/temp_docs/
+server/uploads/
+server/pdfs/
+server/document_565/
+server/temp.pdf
+
+# Security-sensitive files
+server/paplapplication-firebase-adminsdk-dlrxg-4adbf847ee.json
+
+# Docker build cache
+server/docker-compose.yml
+server/Dockerfile

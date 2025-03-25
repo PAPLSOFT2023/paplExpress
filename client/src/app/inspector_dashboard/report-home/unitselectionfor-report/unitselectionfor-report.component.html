@@ -1,0 +1,98 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report_unitSelection</title>
+</head>
+<body>
+<div class="Container">
+    <!-- First Table -->
+    <div class="selected">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>UNITS</th>
+                    <th *ngFor="let unit1 of unit; let i = index">{{ unit1 }}</th>
+                    <th>SELECT ALL UNITS</th>
+                </tr>
+                <tr>
+                    <td>Unit Order for Report</td>
+                    <td  *ngFor="let unitval of unitArray; let i = index"><input [(ngModel)]="unitval.isSelected" (change)="toggleSelection(unitval)" type="checkbox" class="unit-checkbox" ></td>
+                    <td><input  [(ngModel)]="selectAllUnitsChecked" (change)="toggleSelectAll()" type="checkbox"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttons">
+            <button class="but-g" (click)="GenReport()">GENERATE</button>
+
+            <button class="but-m"  (click)="handleButtonClick()" 
+            [disabled]="isButtonDisabled">PICK & DOWNLOAD IMAGES</button>
+
+            <button class="but-p" [disabled]="isProceedDisabled" 
+            (click)="proceed()">PROCEED</button>
+        </div>
+    </div>  
+</div> 
+
+
+<div class="Container2" *ngIf="showSecondTable">
+  <div class="selected2">
+      <div class="table-container2">
+          <table>
+              <tr class="units">
+                  <th>S.NO</th>
+                  <th class="description">DESCRIPTION</th>
+                  <th *ngFor="let unit of selectedOrder">{{ unit }}</th>
+              </tr>
+
+              <tr *ngFor="let Row_data of Description_and_Parts; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td class="description">{{ Row_data.Description }}</td>
+
+                  <!-- Generate Columns Dynamically -->
+                  <td *ngFor="let unit_for_img of selectedOrder">
+                      <ng-container *ngFor="let unit of getObjectKeys(image_val)">
+                          <ng-container *ngIf="unit_for_img === unit">
+                              <ng-container *ngFor="let section of getObjectKeys(image_val[unit])">
+                                  <ng-container *ngFor="let description of getObjectKeys(image_val[unit][section])">
+                                      
+                                      <ng-container *ngIf="description.trim() === Row_data.Description.trim()">
+                                          <div *ngFor="let dropdown of getObjectKeys(image_val[unit][section][description]); let i = index">
+                                              
+                                              <h5>{{ dropdown }}</h5>
+
+                                              <!-- Image -->
+                                              <img [src]="'data:image/jpeg;base64,'+image_val[unit][section][description][dropdown]" 
+                                                  alt="Image" 
+                                                 >
+                                              
+                                              <!-- Checkbox Functionality -->
+                                              <label>
+                                                  Pick for report:
+                                                  <input type="checkbox" class="unit-checkbox1"
+                                                  #checkbox 
+                                                  (change)="toggleImageRecord(i, checkbox.checked, unit, section, description, dropdown)">
+                                              </label>
+                                          </div>
+                                      </ng-container>
+
+                                  </ng-container>
+                              </ng-container>
+                          </ng-container>
+                      </ng-container>
+                  </td>
+              </tr>
+          </table>
+      </div>
+  </div>  
+</div>
+
+<button class="scroll-to-top" (click)="scrollToTop()" *ngIf="showScroll">
+  <img class="up-arrow" src="/assets/up-arrow (1).png" alt="">
+   <!-- <a href=".container"></a> -->
+</button>
+</body>
+</html> 

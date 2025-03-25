@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>MSF</title>
+    <link rel="stylesheet" href="/msf.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>MSF24</h1>
+            <div class="search-box">
+                <button class="btn-search"><i class="fas fa-search"></i></button>
+                <input type="text" class="input-search" placeholder="Type to Search . . .">
+            </div>
+        </header>
+       
+        <main class="content">
+            <h2>MSF24 RECORDS</h2>
+            <br>
+            <hr>
+            <br>
+            <button class="download-btn" (click)="exportToExcelall()"> <i class="fas fa-download" style="font-size: 14px; margin-right: 6px;"></i>DOWNLOAD XL</button>
+            <!-- New Styled Table -->
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>INF REG NO.</th>
+                            <th>ORDER NO</th>
+                            <th>INSPECTION TYPE</th>
+                            <th>CLIENT WO NO.</th>
+                            <th>WO DATED</th>
+                            <th>MASTER CLIENT</th>
+                            <th>CLIENT NAME AS PER WO.</th>
+                            <th>CLIENT REP. NAME</th>
+                            <th>CLIENT REP. CONTACT No.</th>
+                            <th>CLIENT REP. EMAIL ID</th>
+                            <th>PROJECT NAME</th>
+                            <th>BUILDING NAME</th>
+                            <th>LOCATION</th>
+                            <th>REGION</th>
+                            <th>TOWER</th>
+                            <th>TOTAL NO OF UNITS</th>
+                            <th>NO OF UNITS(ELEVATOR)</th>
+                            <th>NO OF UNITS(ESCALATOR)</th>
+                            <th>OEM</th>
+                            <th>NO. OF VISITS AS PER W/O</th>
+                            <th>CURRENT VISIT</th>
+                            <th>INSPECTION MONTH</th>
+                            <th>DATE OF SCHEDULING</th>
+                            <th>No. OF DAYS PROPOSED</th>
+                            <th>SCHEDULE FROM & TO</th>
+                            <th>REPORT STATUS</th>
+                            <th>INSPECTOR NAME/CODE</th>
+                            <th>INVOLVED IN SALES OR NOT</th>
+                            <th>FAMILARITY WITH OEM REP</th>
+                            <th>SHUT DOWN NOTICE ISSUED</th>
+                            <th>CERTIFICATE ISSUED DATE</th>
+                            <th>STICKER PROVIDED DATE</th>
+                            <th>DOWNLOAD</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="inf26Data && inf26Data.length > 0">
+                        <tr *ngFor="let record of inf26Data; let i = index">
+                            <td>{{ i + 1 }}</td> <!-- Serial Number -->
+                            <td>{{ record.id }}</td> <!-- INF REG NO -->
+                            <td>{{ record.contract_number }}</td> <!-- ORDER NO -->
+                            <td>{{ record.type_of_inspection }}</td> <!-- INSPECTION TYPE -->
+                            <td>{{ record.client_whatsapp_number }}</td> <!-- CLIENT WO NO -->
+                            <td>{{ record.customer_workorder_date }}</td> <!-- WO DATED -->
+                            <td>{{ record.master_customer_name }}</td> <!-- MASTER CLIENT -->
+                            <td>{{ record.customer_name_as_per_work_order }}</td> <!-- CLIENT NAME AS PER WO -->
+                            <td>{{ record.customer_contact_name }}</td> <!-- CLIENT REP. NAME -->
+                            <td>{{ record.customer_contact_number }}</td> <!-- CLIENT REP. CONTACT No -->
+                            <td>{{ record.customer_contact_mailid }}</td> <!-- CLIENT REP. EMAIL ID -->
+                            <td>{{ record.project_name }}</td> <!-- PROJECT / BUILDING NAME -->
+                            <td>{{ record.building_name }}</td> <!-- PROJECT / BUILDING NAME -->
+                            <td>{{ record.location }}</td> <!-- LOCATION -->
+                            <td>{{ record.region }}</td> <!-- REGION -->
+                            <td>{{ record.tower ? record.tower : 'N/A' }}</td>
+                            <td>{{ record.total_number_of_units }}</td> <!-- TOTAL NO OF UNITS -->
+                            <td>{{ record.no_of_elevator }}</td> <!-- NO. OF UNITS -->
+                            <td>{{ record.no_of_escalator }}</td> <!-- OEM -->
+                            <td>{{ record.oem_details }}</td> <!-- No. of Visits as per W/O -->
+                            <td>{{ record.no_of_visits_as_per_work_order }}</td> <!-- Current visit no. -->
+                            <td>{{ record.current_visit ? record.current_visit : 'N/A' }}</td> <!-- CUURENT VISIT -->
+                            <td>{{ record.inspection_month ? record.inspection_month : 'N/A' }}</td> <!-- INSPECTION MONTH-->
+                            <td>{{ record.data_of_scheduling ?  record.data_of_scheduling: 'N/A'  }}</td> <!-- DATE OF SCHEDULING -->
+                            <td>{{ record.difference_in_days }}</td> <!-- No. OF DAYS PROPOSED -->
+                            <td>{{ record.schedule_from | date: 'shortDate' }} & {{ record.schedule_to | date: 'shortDate' }}</td>
+                            <!-- <td *ngFor="let record of reportFilesData; let i = index" 
+                                [ngClass]="{
+                                    'pending-status': record.report_status === 'IN PROGRESS',
+                                    'completed-status': record.report_status === 'COMPLETED'
+                                }">
+                                {{ record.report_status }}
+                            </td> REPORT STATUS -->
+                            <td></td>
+                            <td>{{ formatInspectorList(record.inspector_list) }}</td> <!-- INSPECTOR NAME/CODE -->
+                            <td>{{ record.salesProcess }}</td> <!-- Display salesProcess from each record -->
+                            <td>{{ record.familarity_with_oem_representative ? record.familarity_with_oem_representative : 'NO' }}</td> <!-- Familarity with OEM representative -->
+                            <td>{{ formatDate(record.wcc_date) }}</td> <!-- SHUT DOWN NOTICE ISSUED -->
+                            <td>{{ formatDate(record.wcc_date) }}</td> <!-- CERTIFICATE ISSUED DATE -->
+                            <td>{{ record.sticker_provided_date ? record.sticker_provided_date : 'N/A' }}</td> <!-- sticker_provided_date -->
+                            <td> 
+                                <button (click)="exportToExcel(record.id)" style="background: none; border: none; cursor: pointer;">
+                                    <i class="fas fa-file-excel" style="color: green; font-size: 1.8em;"></i>
+                                </button>
+                            </td> <!-- DOWNLOAD -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Paplcorp@dashboard</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+

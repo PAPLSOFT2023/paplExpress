@@ -1,0 +1,728 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .opening-meeting {
+    height: 100vh;
+    background-repeat: no-repeat;
+  }
+  
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px;
+  background-color: #ffffff;
+  color: white;
+}
+
+.logo img {
+  width:40px;
+  height: 38px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-separator {
+  height: 40px;
+  width: 2px;
+  background-color: #3b3765;
+  position: absolute;
+  margin-left: 46px;
+}
+.logo-watch{
+  height: 30px;
+  width: 30px;
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.sales-logo {
+  border: 2px solid #3b3765;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.logo-name .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ee7f22;
+  margin-left: 5px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Right-side elements */
+.header-right {
+  position: absolute;
+  right: 15px; /* Align to the right side */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}
+
+/* Administrator section */
+.emoji-icon {
+  display: flex;
+  align-items: center;
+  color: #ee7f22;
+  font-size: 18px;
+  margin-right:-70px;
+  font-weight: bold;
+  gap: 5px;
+}
+/* Style for the admin image */
+.admin-image {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  margin-right: 5px; /* Space between the image and text */
+  vertical-align: middle; /* Aligns the image with the text */
+}
+
+
+  /* Dropdown Button */
+  .dropbtn {
+    background-color: transparent;
+    color: #393667;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    border: 1.5px solid #ee7f22;
+    right: 0;
+    top: 140%;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  /* Dropdown Links */
+  .dropdown-content a {
+    color: #39346b;
+    padding:10px 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+  }
+  
+  // /* Hover effect on dropdown links */
+  // .dropdown-content a:hover {
+  //   background-color: #f1f1f1;
+  // }
+  .dropdown-content img{
+    width: 18px;
+    margin-bottom: -3px;
+  }
+.login-buttons .btn:hover {
+  background-color: #e0e0e0;
+}
+  
+  .hero {
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    background-image: url("/assets/opening meeting.png");
+    background-size: 100% auto; /* Increases the width to 120% while maintaining the aspect ratio */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    background-position: center; /* Centers the background image */
+  }
+  
+  
+  .timeline {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 30%;
+    max-width: 1000px;
+    position: absolute;
+    top: 90px; 
+    left: 20px; 
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    // background-color: #ee7f22;
+    background: linear-gradient(
+      to right,
+      #ee7f22 0%,    /* Starting color */
+      #ee7f22 35%,   /* White line till 25% */
+      // #ee7f22 65%,   /* White line till 25% */
+      #E3DFDB 25%,    /* Transition to blue */
+      #E3DFDB  100%    /* Blue line till end */
+    );
+    z-index: 1;
+  }
+  .timeline-item {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .timeline-item .icon {
+    font-size: 24px;
+    color: #4caf50;
+  }
+  .timeline-item-inquiry {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 40%; 
+    max-width: 1000px; 
+    position: absolute;
+    color: #fff;
+    margin-left: 20px;
+    top: 100px; 
+    right: 10px; 
+  }
+  .timeline-content p {
+    margin: 0;
+  }
+  .icon{
+    height: 26px;
+    width: 26px;
+  }
+  .timeline-content a {
+    margin-left: 4px;
+    color: yellow;
+  }
+  .mail{
+    width: 14px;
+    margin-left: 6px;
+  }
+  .container{
+    background-color: #3b3765;
+  }
+  .container {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 1200px;
+    display: block; 
+    height: 470px;
+    margin-top: 40px;
+    position: relative; /* Enables positioning of child elements */
+  }
+  
+  .container-heading {
+    display: flex;
+    flex-direction: row; /* Arrange image and heading in a row */
+    align-items: center; /* Align items vertically */
+    gap: 15px; /* Add spacing between image and heading */
+    margin-bottom: 10px; /* Add spacing below heading */
+  }
+  
+  .container-heading img {
+    width: 50px;
+  }
+  
+  .container-heading h1 {
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .table-container {
+    width: 76%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; 
+    max-height: 320px; /* Adjust height for scrollbar visibility */
+  }
+  
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-container th, 
+  .table-container td {
+    text-align: center;
+    padding: 12px 15px;
+    border: 1px solid #393667;
+  }
+  
+  .table-container thead {
+    background-color: #FBF6EF;
+    font-size: 12px;
+    position: sticky; /* Keeps the header in view */
+    top: 0; /* Sticks the header to the top of the container */
+    z-index: 10; /* Ensures the header stays above the table body */
+  }
+  
+  .table-container tbody {
+    font-size: 12px;
+    height: 40px;
+    background-color: #E7E5FF;
+  }
+  
+  /* Style for the dropdown container */
+  .dropdown-ins {
+    width: 102px; /* Makes the dropdown fit the cell */
+    padding: 6px;
+    font-size: 12px; /* Matches the table font size */
+    border: none; /* Removes the box border */
+    border-bottom: 1px solid #3b3765; /* Adds an underline */
+    background-color: transparent; /* Transparent background */
+    color: #000; /* Text color */
+    appearance: none; /* Removes default dropdown arrow */
+    cursor: pointer;
+    text-align: center; /* Centers text */
+    transition: border-color 0.3s ease-in-out; /* Smooth transition for border color */
+  }
+  
+  /* Focus state for the dropdown */
+  .dropdown-ins:focus {
+    outline: none; /* Removes the default focus outline */
+    border-bottom: 1px solid #E77E00; /* Highlights the underline on focus */
+    background-color: transparent; /* Maintains transparency */
+  }
+  
+  /* Style for the options inside the dropdown */
+  .dropdown-ins option {
+    background-color: #E7E5FF; /* Background for dropdown options */
+    color: #000; /* Text color for options */
+    text-align: center; /* Aligns text for options */
+    padding: 8px; /* Adds padding for options */
+    border: none; /* Removes border for options */
+  }
+  
+  /* Hover effect on dropdown options */
+  .dropdown-ins option:hover {
+    background-color: #D4C1FF; /* Light purple background on hover */
+    color: #000; /* Ensure text color remains consistent */
+  }
+  
+  
+  
+  .editable-input {
+    width: 90px; /* Adjust width as needed */
+    padding: 6px;
+    font-size: 12px;
+    border: none; /* Remove the box border */
+    border-bottom: 1px solid #3b3765; /* Add an underline */
+    background-color: transparent; /* Transparent background */
+    outline: none; /* Remove the default focus outline */
+    box-sizing: border-box; /* Include padding in the total width */
+  }
+  
+  .editable-input:focus {
+    border-bottom: 1px solid #E77E00; /* Highlight underline on focus */
+  }
+.form-control{
+    width: 90px; /* Adjust width as needed */
+    padding: 6px;
+    font-size: 12px;
+    border: none; /* Remove the box border */
+    border-bottom: 1px solid #3b3765; /* Add an underline */
+    background-color: transparent; /* Transparent background */
+    outline: none; /* Remove the default focus outline */
+    box-sizing: border-box; /* Include padding in the total width */
+}
+.form-control:focus{
+    border-bottom: 1px solid #E77E00; /* Highlight underline on focus */
+
+}
+  /* Signature Pad Styling */
+  
+  .signature-pad-container {
+    position: relative;
+    display: inline-block;
+    width: 200px; /* Set a fixed width for the signature pad */
+    height: 120px; /* Set a fixed height for the signature pad */
+  }
+  
+  .signature-pad {
+    border: 2px solid #ddd; /* Adjust border width and color */
+    background-color: #FBF6EF; /* Set background to black for contrast */
+    border-radius: 10px; /* Optional: add rounded corners */
+    position: relative; /* Necessary for positioning child elements if needed */
+    display: inline-block; /* Ensures proper spacing around the pad */
+  }
+  
+  
+  .clear-signature-btn {
+    position: absolute; /* Position the button absolutely within the container */
+    top: 1px; /* Distance from the top */
+    right: 3px; /* Distance from the right */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 16px; /* Font size for the button */
+    z-index: 2;
+  }
+  
+  .check-btn {
+    position: absolute; /* Position the check button */
+    bottom: 4px; /* Distance from the bottom */
+    right: 2px; /* Distance from the right */
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .check-btn i {
+    font-size: 14px; /* Adjust icon size */
+  }
+  
+  /* Button Container Styling */
+  .btn-container {
+    display: flex;
+    justify-content: row;
+    gap: 16px; /* Gap between each button */
+    margin-top: 20px; /* Space above the button container */
+    margin-left: 220px;
+  }
+  
+  /* General Button Styling */
+  .btn {
+    color: black; /* Button text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Adjust button padding */
+    font-size: 14px; /* Button font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add hover transition */
+  }
+  
+  /* Hover Effect for Buttons */
+  .btn:hover {
+    background-color: #C56600; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+  }
+  
+  /* Individual Button Styling */
+  .btn {
+    background-color: #E7E5FF; /* Green for Add Row */
+  }
+  
+  .btn {
+    background-color: #E7E5FF; /* Blue for Proceed */
+  }
+  
+  .btn {
+    background-color: #E7E5FF; /* Red for Cancel */
+  }
+
+  .pic-ins {
+    max-width: 360px; 
+    height: auto;
+    margin-right: -76px;
+    margin-top: 46px;
+    position: absolute; /* Fixes the image inside its container */
+    top: 50%; /* Vertically center the image in the container */
+    right: 20px; /* Align it to the right edge of the container */
+    transform: translateY(-50%); /* Adjusts for the image's height to keep it vertically centered */
+    z-index: 300; /* Keeps the image above other elements */
+  }
+  .vertical-line {
+    position: absolute; /* Makes it possible to place the line in the corner */
+    top: 0; /* Aligns the line with the top of the container */
+    right: 0; /* Places the line at the right edge of the container */
+    height: 100%; /* Makes the line span the entire height of the container */
+    border-left: 180px solid #E77E00; /* Line color and thickness */
+    margin-right: 70px;
+  }
+  
+  .disabled-button {
+    background-color:gray; 
+    color: black;
+    cursor: not-allowed; 
+}
+.btn[disabled] {
+    background-color:gray; /* Gray background color */
+    color: black; /* Dark gray text color */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+  }
+  
+  
+  .btn2 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn2:hover {
+    transform: scale(1.1);
+  }
+  
+///////////////////////////////////////nav bar//////////////////////////////
+
+//////pop logout/////
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it appears on top */
+}
+
+.popup-overlay.show {
+  display: flex; /* Show the popup when the class 'show' is added */
+}
+
+.popup-content {
+  background-color: #fff;
+  border: 2px solid #ee7f22;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  max-width: 400px;
+  text-align: center;
+  animation: popupAnimation 0.3s ease-in-out;
+}
+
+@keyframes popupAnimation {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #393667;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-buttons .confirm {
+  background-color: #393667;
+  color: #fff;
+  border: 2px solid #ee7f22;
+
+}
+
+.popup-buttons .cancel {
+  background-color: #393667;
+  color: #fff;
+  border: 2px solid #ee7f22;
+
+}
+.popup-buttons .confirm:hover,
+.popup-buttons .cancel:hover {
+background-color: #ee7f22; /* Change to orange on hover */
+color: #fff;
+border-color: #393667; /* Slightly lighter orange border */
+}
+// .popup-buttons .confirm:hover{
+//   background-color: #ee7f22;
+//   color: #fff;
+//   border: 2px solid #ee7f22;
+
+// }
+
+// .popup-buttons .cancel:hover {
+//   background-color: #ee7f22;
+//   color: #fff;
+//       border: 2px solid #ee7f22;
+
+// }
+
+/* Blur effect for the background */
+.popup-background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+  backdrop-filter: blur(10px); /* Blur effect */
+  z-index: 1000; /* Behind the popup */
+}
+
+
+/* manage-account-popup.component.css */
+.popup1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Make sure the popup is above the blurred background */
+  width: 400px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+  border: 2px solid #ee7f22;
+}
+
+.popup-content1 {
+  position: relative;
+}
+
+/* Align close button to the top-right corner */
+.close1 {
+  position: absolute;
+  top: -14px; /* Distance from the top */
+  right: -14px; /* Distance from the right */
+  font-size: 34px;
+  color: #c82333;
+  cursor: pointer;
+}
+
+
+.form-container {
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #39346b;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #393667;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ee7f22;
+  font-size: 14px;
+  color: #393667;
+}
+.form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="password"]:hover,
+.form-group input[type="file"]:hover {
+border: 1px solid #393667;
+
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 54%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 16px;
+  color: #393667;
+}
+
+.image-preview img {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: #393667;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.icons{
+  width: 30px;
+}
+.icons {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  margin-right:-60px;
+}
+
+
+.zoom{
+  width:20px;
+  cursor: pointer;
+  margin-right:-60px;
+}

@@ -1,0 +1,802 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px); /* Blurred effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  border:2px solid #ee7f22;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #39346B;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #39346B;
+  border:2px solid #ee7f22;
+  border-radius: 4px;
+}
+.modal-content input:hover {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #39346B;
+  border:2px solid #ee7f22;
+  border-radius: 4px;
+}
+
+/* Close icon styling moved to top-right corner */
+.close-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 30px;
+  color:#f44336;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+/* Centering Save button */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  background: #ee7f22;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.opening-meeting {
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 60px;
+  background-color: #ffffff;
+  color: white;
+}
+
+.logo img {
+  width:40px;
+  height: 38px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-separator {
+  height: 40px;
+  width: 2px;
+  background-color: #3b3765;
+  position: absolute;
+  margin-left: 46px;
+}
+.logo-watch{
+  height: 30px;
+  width: 30px;
+}
+.logo-name {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.sales-logo {
+  border: 2px solid #3b3765;
+  padding-right: 5px;
+  border-radius: 5px;
+}
+
+.logo-name .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ee7f22;
+  margin-left: 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Right-side elements */
+.header-right {
+  position: absolute;
+  right: 15px; /* Align to the right side */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}
+
+/* Administrator section */
+.emoji-icon {
+  display: flex;
+  align-items: center;
+  color: #ee7f22;
+  font-size: 18px;
+  margin-right:-70px;
+  font-weight: bold;
+  gap: 5px;
+}
+/* Style for the admin image */
+.admin-image {
+  width: 30px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  margin-right: 5px; /* Space between the image and text */
+  vertical-align: middle; /* Aligns the image with the text */
+}
+
+
+  /* Dropdown Button */
+  .dropbtn {
+    background-color: transparent;
+    color: #393667;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    border: 1.5px solid #ee7f22;
+    right: 0;
+    top: 140%;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  /* Dropdown Links */
+  .dropdown-content a {
+    color: #39346b;
+    padding:10px 10px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+  }
+  
+  // /* Hover effect on dropdown links */
+  // .dropdown-content a:hover {
+  //   background-color: #f1f1f1;
+  // }
+  .dropdown-content img{
+    width: 18px;
+    margin-bottom: -3px;
+  }
+
+.login-buttons .btn:hover {
+  background-color: #e0e0e0;
+}
+
+.hero {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  background-image: url("/assets/opening meeting.png");
+  background-size: 100% auto; /* Increases the width to 120% while maintaining the aspect ratio */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  background-position: center; /* Centers the background image */
+}
+
+ /* Main Container */
+.container {
+  width: 90%;
+  max-width: 683px;
+  max-height: 90vh;
+  margin: auto;
+  background-color: #39346B;
+  padding: 50px 0;
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.outerline-box{
+  background-color: #ffff;
+  padding: 10px 10px 20px  10px ;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 200px;
+  max-height: 80vh;
+  overflow-y: auto;
+  min-width: 459px;
+  max-width: 560px;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.audit-box {
+  background-color: #ffff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 200px;
+  max-height: 70vh;
+  overflow-y: auto;
+  min-width: 459px;
+  max-width: 520px;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  border: 2px solid #ee7f22;
+
+}
+
+
+.audit-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* Centering Individual Items */
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px; /* Ensures minimum space is filled */
+}
+
+/* Dynamic Content Handling */
+// .audit-box > * {
+//   // margin: 10px 0; /* Spacing between dynamic items */
+// }
+
+
+.audit-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  margin: 4px 0;
+  position: relative;
+  top: -18px;
+  left: 0px;
+  white-space: nowrap; /* 👈 Keeps text in one line */
+}
+.check{
+  text-align: right;
+  width: 100%;
+  font-size: 12px;
+  margin-left:-178px;
+  color: #ffff;
+  margin-bottom:2px;
+}
+.top-icons1 {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  left: 88px;
+  top: 86px;
+}
+.top-icons2 {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  left: 534px;
+  top:86px;
+}
+
+
+/* Icons */
+.sync-icon1, .check-icon1 {
+  width: 24px;
+  height: 24px;
+}
+
+/* Audit Item Text */
+.audit-item span {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  top: -19px;
+  left: 34px;
+  width: 26px;
+}
+
+/* Inner Container - Center Inside Audit Box */
+.inner-container {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* Auto adjust */
+  max-width: 500px;
+  gap: 10px;
+  height: auto; /* Auto height */
+  min-height: 150px;
+  max-height: 56vh;
+  overflow-y: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Scrollbar Styling */
+.inner-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.inner-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.inner-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+/* Audit Item - Ensure it is Centered */
+.audit-item {
+  width: 240px;
+
+  height: 83px;
+  background-color: #ffff;
+  border: 1px solid #39346B;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-sizing: border-box;
+  margin: 5px auto;
+  flex-shrink: 0; /* Prevent item from shrinking */
+}
+/* Icon - Make Sure It Doesn't Shift Position */
+.audit-item i {
+  font-size: 24px; /* Adjust size if needed */
+  color: #39346B; /* Icon color */
+}
+
+/* Scrollbar */
+.inner-container::-webkit-scrollbar {
+  width: 6px;
+  display: none;
+}
+.audit-icon {
+  position: relative;
+  right: -160px;
+  width: 18px;
+  // height: 24px;
+  bottom: 24px;
+  cursor: pointer;
+}
+
+/* Button */
+.btn {
+  background-color: orange;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 24px;
+  height: 30px;
+  width: 85px;
+  /* Remove unnecessary positioning */
+  position: relative;
+  left: -22px; /* Remove unwanted shifting */
+}
+
+/* Skeleton Animation */
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* General Skeleton Styles */
+.skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton for the entire audit-box */
+.skeleton-audit-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #ee7f22;
+  padding: 20px;
+  width: 100%;
+  min-height: 200px;
+  max-height: 60vh;
+  overflow-y: auto;
+  min-width: 459px;
+  max-width: 520px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Skeleton Loader for Top Icons */
+.skeleton-top-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+/* Individual Skeleton for Top Icons */
+.skeleton-icon-top {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Skeleton Audit Item */
+.skeleton-audit-item {
+  width: 240px;
+  height: 83px;
+  background-color: #fcfcfc;
+  border: 1px solid #39346B;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  box-sizing: border-box;
+  margin: 5px auto;
+  position: relative;
+}
+
+/* Skeleton Icon */
+.skeleton-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  bottom: 24px;
+}
+
+/* Skeleton Text (Audit Item Text) */
+.skeleton-text {
+  width: 80px;
+  height: 16px;
+  border-radius: 4px;
+  position: absolute;
+  top: 30px;
+  left: 80px;
+}
+
+/* Skeleton Button */
+.skeleton-button {
+  width: 85px;
+  height: 30px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px;
+  left: 78px;
+}
+
+///////////////////////////////////////nav bar//////////////////////////////
+
+//////pop logout/////
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it appears on top */
+}
+
+.popup-overlay.show {
+  display: flex; /* Show the popup when the class 'show' is added */
+}
+
+.popup-content {
+  background-color: #fff;
+  border: 2px solid #ee7f22;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  max-width: 400px;
+  text-align: center;
+  animation: popupAnimation 0.3s ease-in-out;
+}
+
+@keyframes popupAnimation {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #393667;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-buttons .confirm {
+  background-color: #393667;
+  color: #fff;
+  border: 2px solid #ee7f22;
+
+}
+
+.popup-buttons .cancel {
+  background-color: #393667;
+  color: #fff;
+  border: 2px solid #ee7f22;
+
+}
+.popup-buttons .confirm:hover,
+.popup-buttons .cancel:hover {
+background-color: #ee7f22; /* Change to orange on hover */
+color: #fff;
+border-color: #393667; /* Slightly lighter orange border */
+}
+// .popup-buttons .confirm:hover{
+//   background-color: #ee7f22;
+//   color: #fff;
+//   border: 2px solid #ee7f22;
+
+// }
+
+// .popup-buttons .cancel:hover {
+//   background-color: #ee7f22;
+//   color: #fff;
+//       border: 2px solid #ee7f22;
+
+// }
+
+/* Blur effect for the background */
+.popup-background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+  backdrop-filter: blur(10px); /* Blur effect */
+  z-index: 1000; /* Behind the popup */
+}
+
+
+/* manage-account-popup.component.css */
+.popup1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1001; /* Make sure the popup is above the blurred background */
+  width: 400px;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+  border: 2px solid #ee7f22;
+}
+
+.popup-content1 {
+  position: relative;
+}
+
+/* Align close button to the top-right corner */
+.close1 {
+  position: absolute;
+  top: -14px; /* Distance from the top */
+  right: -14px; /* Distance from the right */
+  font-size: 34px;
+  color: #c82333;
+  cursor: pointer;
+}
+
+
+.form-container {
+  text-align: center;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #39346b;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #393667;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+  width: calc(100% - 10px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ee7f22;
+  font-size: 14px;
+  color: #393667;
+}
+.form-group input[type="text"]:hover,
+.form-group input[type="email"]:hover,
+.form-group input[type="password"]:hover,
+.form-group input[type="file"]:hover {
+border: 1px solid #393667;
+
+}
+
+.password-group {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 54%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password i {
+  font-size: 16px;
+  color: #393667;
+}
+
+.image-preview img {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: #393667;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.icons{
+  width: 30px;
+}
+.icons {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  margin-right:-60px;
+}
+
+
+.zoom{
+  width:20px;
+  cursor: pointer;
+  margin-right:-60px;
+}

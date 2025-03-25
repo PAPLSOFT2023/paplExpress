@@ -1,0 +1,199 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="opening-meeting">
+  <!-- Navbar -->
+  <nav class="navbar">
+   <div class="left-section">
+    <div class="logo">
+     <img src="/assets/papl_logo_sample copy.png" alt="Official Logo">
+    </div>
+    
+    <div class="logo-separator"></div>
+    <div class="logo-name">
+     <img class="logo-watch" src="/assets/inspector bl.png" alt="">
+     <span class="name">INSPECTOR DASHBOARD</span>
+    </div>
+   </div>
+   <div class="right-section">
+    <img (click)="toggleFullScreen()" class="zoom" [src]="imageSrc" alt="Zoom">
+    <div class="notification" (click)="redirectSchedule()">
+      <img src="/assets/bell.png" alt="">
+      <span class="icon-button__badge">{{ recordCount }}</span>
+  </div>
+    <div class="emoji-icon">
+      <!-- Dynamic Image Preview -->
+<img *ngIf="previewSrc" [src]="previewSrc" alt="Preview Image" class="admin-image dynamic-image">{{name}}
+
+
+
+
+  </div>
+
+  <div class="dropdown">
+      <!-- Dropdown Button -->
+      <button class="dropbtn" (click)="toggleDropdown()">
+          <i class="fas fa-chevron-down"></i>
+      </button>
+
+      <!-- Dropdown Content -->
+      <div class="dropdown-content" [class.show]="dropdownVisible">
+        <a  (click)="openManageAccountPopup()"><i class="fa fa-cog"></i> Manage Account</a>
+          <a (click)="openLogoutPopup()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+</div>
+
+    
+   </div>
+  </nav>
+ 
+  <div class="hero">
+    <div class="main-container">
+      <div *ngIf="isLoading" class="skeleton-loader">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    <div class="cards" *ngIf="!isLoading">
+      <div class="card" (click)="redirect1()">
+        <h3 class="card-title">SCHEDULED JOBS</h3>
+        <h2 class="card-number">{{ animatedNumbers[0] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/jobs.png" alt="">
+        </div>
+    </div>
+    
+    <div class="card" (click)="redirect2()">
+        <h3 class="card-title">INSPECTION IN PROGRESS</h3>
+        <h2 class="card-number">{{ animatedNumbers[1] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/deal (1).png" alt="">
+        </div>
+    </div>
+    
+    <div class="card" (click)="redirect3()">
+        <h3 class="card-title">REPORT HUB</h3>
+        <h2 class="card-number">{{ animatedNumbers[2] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/Outline.png" alt="">
+        </div>
+    </div>
+    
+    <div class="card" (click)="redirect4()">
+        <h3 class="card-title" >SUPPORTING DOCUMENT</h3>
+        <h2 class="card-number">{{ animatedNumbers[3] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/office-material.png" alt="">
+        </div>
+    </div>
+    
+    <div class="card" (click)="redirect5()">
+        <h3 class="card-title">CERTIFICATE QR</h3>
+        <h2 class="card-number">{{ animatedNumbers[4] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/qr-code (1).png" alt="">
+        </div>
+    </div>
+    
+    <!-- <div class="card">
+        <h3 class="card-title">SEND MAIL</h3>
+        <h2 class="card-number">{{ animatedNumbers[5] }}</h2>
+        <div class="icon-container">
+            <img src="/assets/email (1).png" alt="">
+        </div>
+    </div> -->
+    
+
+
+       
+    </div>
+    <div class="ins-img">
+      <img src="/assets/inspectors.png" alt="">
+    </div>
+  </div>
+      
+</div>
+
+
+</div>
+ 
+
+<!-- ///////////pop for manage account form update html code /////////////////// -->
+<div class="popup-background-blur" *ngIf="isVisible"></div> <!-- Background blur -->
+<div class="popup1" *ngIf="isVisible">
+    <div class="popup-content1">
+        <span class="close1" (click)="closePopup1()" title="Close">&times;</span>
+      
+        <div class="form-container">
+          <h2>Manage Account</h2>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+            <div class="form-group">
+              <label for="Username">Name</label>
+              <input type="text" id="Username" name="Username" [(ngModel)]="formData.Username" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" [(ngModel)]="formData.email" required>
+            </div>
+      
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                [(ngModel)]="formData.password" 
+                [type]="isPasswordVisible ? 'text' : 'password'" 
+                required
+              >
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i 
+                  id="eyeIcon" 
+                  [ngClass]="{'fa-eye': isPasswordVisible, 'fa-eye-slash': !isPasswordVisible}" 
+                  class="fa" 
+                  style="margin-top: 20px; margin-right: 5px;">
+                </i>
+              </span>
+            </div>
+            <div class="form-group">
+              <label for="picture">Upload Profile Picture</label>
+              <input type="file" id="Picture" name="Picture" (change)="onFileSelected($event)">
+            </div>
+            
+            <div class="image-preview" *ngIf="previewSrc">
+              <img id="preview" [src]="previewSrc" alt="Preview Image" style="max-width: 100px; max-height: 100px;">
+            </div>
+      
+            <div class="form-group">
+                <button 
+                type="submit" 
+                [disabled]="!formData.password || !formData.picture" 
+                [ngStyle]="{'background-color': !formData.password || !formData.picture ? '#ccc' : '#ee7f22', 
+                'color': !formData.password || !formData.picture ? '#666' : '#393667'}"
+                [ngClass]="{'disabled-button': !formData.password || !formData.picture}"
+              >
+              Update Account
+    </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+</div>
+
+<div class="popup-overlay" [class.show]="showPopup">
+  <div class="popup-content">
+      <!-- <h2>Confirm Logout</h2> -->
+      <p>Are you sure you want to log out?</p>
+      <div class="popup-buttons">
+          <button class="confirm" (click)="confirmLogout()">
+               Yes
+          </button>
+          <button class="cancel" (click)="closePopup()">
+               No
+          </button>
+      </div>
+  </div>
+    </div>

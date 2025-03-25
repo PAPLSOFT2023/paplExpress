@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+<div class="container">
+  <header class="header">
+    <h1>TYPE MASTER</h1>
+    <div class="search-box">
+      <button class="btn-search"><i class="fas fa-search"></i></button>
+      <input type="text" class="input-search" placeholder="Type to Search..." />
+    </div>
+  </header>
+
+  <main class="content">
+    <h2>TYPE MASTER</h2>
+    <br />
+    <hr />
+    <br />
+
+    <div class="add-user-container">
+      <button class="add-user-button" (click)="openPopup()">
+        <i class="fas fa-plus"></i>Add Type Master
+      </button>
+    </div>
+
+    <!-- Display Users in a Table -->
+    <div class="table-responsive">
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>S.NO</th>
+            <th>TYPE NAMES</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let type of types">
+            <td>{{ type.organization_id }}</td>
+            <td>{{ type.type_name }}</td>
+            <td>
+              <button class="edit-btn" (click)="openEditPopup(type)">
+                <i class="fas fa-edit" title="EDIT"></i>
+              </button>
+              <button class="delete-btn"(click)="deleteType(type.id)">
+                <i class="fas fa-trash-alt" title="DELETE"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    
+    <!-- Add/Edit Popup -->
+<div class="popup-container" *ngIf="isPopupVisible || isEditPopupVisible">
+  <div class="popup-content">
+    <h2 class="popup-title" style="color: black;">
+      {{ isEditPopupVisible ? 'Edit Type Master' : 'Add Type Master' }}
+    </h2>
+    <i class="fa fa-times cancel-icon" (click)="closePopup()"></i>
+
+    <form (ngSubmit)="isEditPopupVisible ? updateType() : addType()">
+      <label for="typeName">{{ isEditPopupVisible ? 'Edit' : 'Add' }} Type Name:</label>
+      <input
+      type="text"
+      id="typeName"
+      [(ngModel)]="currentTypeName"
+      name="typeName"
+      placeholder="Enter type name"
+      required
+    />
+      <label for="organization">Select Organization:</label>
+      <select id="organization" [(ngModel)]="selectedOrganizationId" name="organization" required>
+        <option value="" disabled>Select an organization</option>
+        <option *ngFor="let org of organizations" [value]="org.id">{{ org.organization_name }}</option>
+      </select>
+
+      <div class="popup-buttons33">
+        <button type="submit" class="confirm">
+          <i class="fa fa-check"></i> {{ isEditPopupVisible ? 'Update' : 'Add' }} Type
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- 
+<h2>Type Master</h2>
+
+<div>
+  <label for="typeName">Type Name:</label>
+  <input [(ngModel)]="typeName" id="typeName" />
+  
+  <label for="organizationSelect">Select Organization:</label>
+  <select [(ngModel)]="selectedOrganizationId" id="organizationSelect">
+    <option *ngFor="let org of organizations" [value]="org.id">{{ org.organization_name }}</option>
+  </select>
+  
+  <button (click)="addType()">Add Type</button>
+</div>
+
+<h3>Existing Types</h3>
+<ul>
+  <li *ngFor="let type of types">
+    {{ type.type_name }} (Org ID: {{ type.organization_id }})
+    <button (click)="setUpdateType(type)">Edit</button>
+    <button (click)="deleteType(type.id)">Delete</button>
+  </li>
+</ul>
+
+ <-- Update Form -->
+<!-- <div *ngIf="isUpdating">
+  <h3>Update Type</h3>
+  <label for="updateTypeName">New Type Name:</label>
+  <input [(ngModel)]="updateTypeName" id="updateTypeName" />
+  <button (click)="updateType()">Update Type</button>
+  <button (click)="cancelUpdate()">Cancel</button>
+</div> --> 
